@@ -14,7 +14,7 @@
 | Institución | UTN Sede San Carlos |
 | Periodo | III Cuatrimestre 2026 |
 | Docente / patrocinador | Docente del curso ISW-912 |
-| Versión del expediente | 1.1 |
+| Versión del expediente | 1.2 |
 
 **Integrantes**
 
@@ -272,64 +272,518 @@ Duración total: 10 semanas, divididas en 5 sprints de 2 semanas.
 
 El Product Backlog se prioriza con MoSCoW (columna *Prioridad* de la sección 05). Si el tiempo no alcanza, se ajusta el alcance moviendo primero las historias **Could** (HU-21, HU-22) y luego las **Should**.
 
-### Criterios de aceptación por sprint
+### Historias de usuario detalladas y criterios de aceptación
 
-**Sprint 1**
+Cada historia sigue el formato **Como / Quiero / Para**, con criterios de aceptación en formato **Dado / cuando / entonces**.
 
-| HU | Criterios de aceptación |
-|----|-------------------------|
-| HU-28 | Repositorio creado con ramas definidas; arquitectura base documentada; app móvil ejecutándose en un dispositivo o emulador. |
-| HU-01 | El usuario puede registrarse e iniciar sesión; las contraseñas no se guardan en texto plano; los errores se muestran con mensajes claros. |
-| HU-02 | El perfil guarda nombre, zona y cultivos de interés y puede consultarse luego. |
-| HU-03 | El catálogo muestra los cultivos principales de la zona y permite seleccionar uno. |
-| HU-08 | Guía de estilo con íconos, tamaños de letra y textos simples aplicada a las pantallas base. |
-| HU-16 | Documento con fuente, licencia/condiciones de uso y frecuencia de actualización de los datos del CENADA/SIMM. |
-| HU-27 | Pantalla de consentimiento obligatoria antes de usar la app; se registra la aceptación. |
-| HU-29 | Mockups de las pantallas clave revisados con al menos 3 productores; ajustes documentados. |
+> **Convenciones:** Prioridad MoSCoW → Must have (Alta), Should have (Media), Could have (Baja). Estimación en puntos de historia (Fibonacci). Lo que desarrolla uno lo prueba el otro.
 
-**Sprint 2**
+### Sprint 1 (semanas 1-2)
 
-| HU | Criterios de aceptación |
-|----|-------------------------|
-| HU-04 | Se guarda cultivo, cantidad y fecha estimada; se validan campos vacíos y fechas inválidas. |
-| HU-05 | El listado muestra todos los registros del usuario ordenados por fecha de cosecha. |
-| HU-06 | Se puede editar y eliminar un registro con confirmación previa. |
-| HU-07 | Con el dispositivo sin conexión se pueden crear, ver y editar registros; los datos persisten al cerrar la app. |
-| HU-12 | Proceso que descarga y almacena precios del CENADA/SIMM; registra fecha y fuente de cada carga. |
-| HU-15 | Ante un cambio de formato, la ingesta falla de forma controlada, registra el error y conserva los datos previos. |
+#### HU-01: Creación de cuenta e inicio de sesión del productor
 
-**Sprint 3**
+| Campo | Detalle |
+|-------|---------|
+| **Título** | Creación de cuenta e inicio de sesión del productor |
+| **Historia de usuario** | **Como** productor,<br>**Quiero** crear mi cuenta e iniciar sesión,<br>**Para** acceder a mi información de forma segura. |
+| **Criterios de aceptación** | 1. **Dado** que soy un productor que aún no tiene cuenta, **cuando** completo el formulario de registro con datos válidos, **entonces** el sistema crea mi cuenta y me permite ingresar a la aplicación.<br>2. **Dado** que tengo una cuenta registrada, **cuando** inicio sesión con mis credenciales correctas, **entonces** el sistema me da acceso a mi información.<br>3. **Dado** que ingreso credenciales incorrectas o dejo campos vacíos, **cuando** intento registrarme o iniciar sesión, **entonces** el sistema muestra un mensaje de error claro que me indica cómo corregirlo.<br>4. **Dado** que me registro en la aplicación, **cuando** el sistema guarda mi contraseña, **entonces** esta no se almacena en texto plano. |
+| **Prioridad** | Must have (Alta) |
+| **Estimación** | 3 puntos de historia |
+| **Sprint** | 1 |
+| **Responsable** | Fabio / Lo prueba Joshua |
+| **Épica** | E1 – Cuenta, perfil y privacidad |
+| **Dependencias** | HU-28 (repositorio, arquitectura base y app ejecutándose) |
+| **Notas adicionales** | Diseños: mockups de la pantalla de registro e inicio de sesión, a validar en HU-29. |
 
-| HU | Criterios de aceptación |
-|----|-------------------------|
-| HU-09 | Los registros creados offline se envían al servidor al detectar conexión, sin duplicados. |
-| HU-10 | Indicador visible: sincronizado, pendiente o error. |
-| HU-13 | Histórico de precios consultable por producto y rango de fechas. |
-| HU-14 | El productor ve el último precio disponible de su cultivo, con la fecha de la última actualización, incluso offline. |
-| HU-17 | El modelo identifica tendencia (sube, baja, estable) y estacionalidad para al menos los cultivos del catálogo con datos suficientes; resultados documentados. |
+#### HU-02: Registro del perfil del productor
 
-**Sprint 4**
+| Campo | Detalle |
+|-------|---------|
+| **Título** | Registro del perfil del productor |
+| **Historia de usuario** | **Como** productor,<br>**Quiero** registrar mi perfil (nombre, zona y cultivos de interés),<br>**Para** recibir información adaptada a mí. |
+| **Criterios de aceptación** | 1. **Dado** que inicié sesión como productor, **cuando** completo mi nombre, zona y cultivos de interés y guardo, **entonces** el sistema almacena mi perfil.<br>2. **Dado** que ya registré mi perfil, **cuando** lo consulto posteriormente, **entonces** el sistema me muestra los datos que guardé.<br>3. **Dado** que dejo vacío un dato obligatorio del perfil, **cuando** intento guardar, **entonces** el sistema muestra un mensaje claro que indica qué dato falta. |
+| **Prioridad** | Must have (Alta) |
+| **Estimación** | 2 puntos de historia |
+| **Sprint** | 1 |
+| **Responsable** | Fabio / Lo prueba Joshua |
+| **Épica** | E1 – Cuenta, perfil y privacidad |
+| **Dependencias** | HU-01 (el productor debe haber iniciado sesión) |
+| **Notas adicionales** | Relacionada con HU-03 (catálogo de cultivos), que puede usarse para elegir los cultivos de interés. |
 
-| HU | Criterios de aceptación |
-|----|-------------------------|
-| HU-18 | Dada una producción registrada y las tendencias, se genera una alerta con cultivo, mensaje claro y momento sugerido. |
-| HU-19 | La alerta llega como notificación al dispositivo; si no hay conexión, se muestra al abrir la app. |
-| HU-11 | Ante cambios en el mismo registro desde dos fuentes, se aplica una regla definida (p. ej. última modificación) y no se pierde información. |
-| HU-23 | El comprador se registra con nombre, tipo y productos de interés. |
-| HU-24 | El comprador publica una demanda con cultivo, cantidad y fecha; puede cerrarla o editarla. |
+#### HU-03: Selección de cultivo desde un catálogo
 
-**Sprint 5**
+| Campo | Detalle |
+|-------|---------|
+| **Título** | Selección de cultivo desde un catálogo |
+| **Historia de usuario** | **Como** productor,<br>**Quiero** elegir mi cultivo desde un catálogo,<br>**Para** no escribirlo manualmente ni cometer errores. |
+| **Criterios de aceptación** | 1. **Dado** que necesito indicar un cultivo, **cuando** abro el catálogo, **entonces** el sistema muestra los cultivos principales de la zona.<br>2. **Dado** que estoy viendo el catálogo, **cuando** selecciono un cultivo, **entonces** el sistema lo registra como elegido sin que tenga que escribirlo.<br>3. **Dado** que el catálogo tiene varios cultivos, **cuando** lo recorro, **entonces** cada cultivo se muestra con nombre e ícono fácil de reconocer. |
+| **Prioridad** | Must have (Alta) |
+| **Estimación** | 2 puntos de historia |
+| **Sprint** | 1 |
+| **Responsable** | Joshua / Lo prueba Fabio |
+| **Épica** | E2 – Registro de producción offline |
+| **Dependencias** | HU-28 (arquitectura base) |
+| **Notas adicionales** | Lo usan HU-02 (cultivos de interés) y HU-04 (registro de producción). Debe estar disponible sin conexión. |
 
-| HU | Criterios de aceptación |
-|----|-------------------------|
-| HU-25 | Se listan demandas compatibles por cultivo, cantidad aproximada y fecha; se ordenan por relevancia. |
-| HU-26 | El productor marca interés y el comprador recibe el aviso con los datos de contacto autorizados. |
-| HU-20 | El productor puede activar/desactivar tipos de alerta y elegir frecuencia. |
-| HU-30 | Prueba con grupo piloto; resultados y mejoras documentados; ajustes críticos aplicados. |
-| HU-31 | Casos de prueba ejecutados; defectos críticos resueltos; DoD verificada por QA. |
-| HU-32 | Manual breve con capturas de las funciones principales. |
-| HU-33 | Demo preparada y presentada al docente; documento final y repositorio actualizados. |
-| HU-21, HU-22 | _(Stretch)_ Se abordan solo si el sprint va holgado. |
+#### HU-08: Interfaz con íconos y lenguaje claro
+
+| Campo | Detalle |
+|-------|---------|
+| **Título** | Interfaz con íconos y lenguaje claro |
+| **Historia de usuario** | **Como** productor,<br>**Quiero** una interfaz con íconos y lenguaje claro,<br>**Para** usar la app aunque tenga poca experiencia digital. |
+| **Criterios de aceptación** | 1. **Dado** que el equipo diseña las pantallas, **cuando** se define la guía de estilo, **entonces** esta incluye íconos, tamaños de letra mínimos y textos simples.<br>2. **Dado** que existe la guía de estilo, **cuando** se revisan las pantallas base, **entonces** todas aplican esa guía.<br>3. **Dado** que soy un productor con poca experiencia digital, **cuando** uso las pantallas base, **entonces** puedo identificar cada acción por su ícono y texto sin términos técnicos. |
+| **Prioridad** | Must have (Alta) |
+| **Estimación** | 3 puntos de historia |
+| **Sprint** | 1 |
+| **Responsable** | Joshua / Lo prueba Fabio |
+| **Épica** | E7 – Calidad, UX y cierre |
+| **Dependencias** | Se valida junto con HU-29 (mockups con productores) |
+| **Notas adicionales** | La guía de estilo aplica a todas las pantallas que se construyan en sprints posteriores. |
+
+#### HU-16: Documentación de condiciones de uso de datos CENADA/SIMM
+
+| Campo | Detalle |
+|-------|---------|
+| **Título** | Documentación de condiciones de uso de datos CENADA/SIMM |
+| **Historia de usuario** | **Como** equipo,<br>**Quiero** documentar las condiciones de uso de los datos del CENADA/SIMM,<br>**Para** usarlos de forma autorizada. |
+| **Criterios de aceptación** | 1. **Dado** que el proyecto usará datos del CENADA/SIMM, **cuando** se investiga la fuente, **entonces** se documenta la fuente oficial de los datos.<br>2. **Dado** que se revisó la fuente, **cuando** se completa el documento, **entonces** este incluye la licencia o condiciones de uso.<br>3. **Dado** que el documento está completo, **cuando** se consulta, **entonces** indica la frecuencia de actualización de los datos. |
+| **Prioridad** | Must have (Alta) |
+| **Estimación** | 2 puntos de historia |
+| **Sprint** | 1 |
+| **Responsable** | Fabio / Lo prueba Joshua |
+| **Épica** | E4 – Datos de mercado CENADA/SIMM |
+| **Dependencias** | Ninguna |
+| **Notas adicionales** | Requisito previo de HU-12 (ingesta de precios). Parte de la estrategia de involucramiento con el interesado crítico CENADA/PIMA. |
+
+#### HU-27: Consentimiento de uso de datos personales
+
+| Campo | Detalle |
+|-------|---------|
+| **Título** | Consentimiento de uso de datos personales |
+| **Historia de usuario** | **Como** usuario,<br>**Quiero** aceptar un consentimiento sobre el uso de mis datos personales,<br>**Para** saber qué información se recolecta y cómo se usa. |
+| **Criterios de aceptación** | 1. **Dado** que abro la aplicación por primera vez, **cuando** intento usarla, **entonces** el sistema muestra obligatoriamente la pantalla de consentimiento.<br>2. **Dado** que leo el consentimiento, **cuando** lo acepto, **entonces** el sistema registra la aceptación y me permite continuar.<br>3. **Dado** que no acepto el consentimiento, **cuando** intento continuar, **entonces** el sistema no me permite usar la aplicación. |
+| **Prioridad** | Must have (Alta) |
+| **Estimación** | 3 puntos de historia |
+| **Sprint** | 1 |
+| **Responsable** | Joshua / Lo prueba Fabio |
+| **Épica** | E1 – Cuenta, perfil y privacidad |
+| **Dependencias** | HU-28 (arquitectura base) |
+| **Notas adicionales** | Responde al EEF de normativa de protección de datos personales. Texto con lenguaje claro según HU-08. |
+
+#### HU-28: Configuración del repositorio y arquitectura base
+
+| Campo | Detalle |
+|-------|---------|
+| **Título** | Configuración del repositorio y arquitectura base |
+| **Historia de usuario** | **Como** equipo,<br>**Quiero** configurar el repositorio, la arquitectura base y el flujo de trabajo,<br>**Para** construir de forma ordenada. |
+| **Criterios de aceptación** | 1. **Dado** que el proyecto inicia, **cuando** se configura el repositorio, **entonces** este queda creado con las ramas definidas.<br>2. **Dado** que se define la arquitectura, **cuando** se documenta, **entonces** la arquitectura base queda registrada en el repositorio.<br>3. **Dado** que la base está configurada, **cuando** se ejecuta la app, **entonces** esta corre en un dispositivo o emulador. |
+| **Prioridad** | Must have (Alta) |
+| **Estimación** | 5 puntos de historia |
+| **Sprint** | 1 |
+| **Responsable** | Joshua y Fabio / Revisión cruzada |
+| **Épica** | E7 – Calidad, UX y cierre |
+| **Dependencias** | Ninguna |
+| **Notas adicionales** | Base para el resto de historias. La arquitectura debe contemplar el enfoque offline-first. |
+
+#### HU-29: Validación de mockups con productores
+
+| Campo | Detalle |
+|-------|---------|
+| **Título** | Validación de mockups con productores |
+| **Historia de usuario** | **Como** equipo,<br>**Quiero** validar mockups con productores de San Carlos,<br>**Para** confirmar el diseño antes de programar. |
+| **Criterios de aceptación** | 1. **Dado** que existen mockups de las pantallas clave, **cuando** se presentan a productores, **entonces** son revisados por al menos 3 productores.<br>2. **Dado** que los productores dieron retroalimentación, **cuando** se analiza, **entonces** los ajustes acordados quedan documentados.<br>3. **Dado** que se documentaron los ajustes, **cuando** se actualizan los mockups, **entonces** la versión final se usa como referencia para el desarrollo. |
+| **Prioridad** | Must have (Alta) |
+| **Estimación** | 3 puntos de historia |
+| **Sprint** | 1 |
+| **Responsable** | Joshua / Lo prueba Fabio |
+| **Épica** | E7 – Calidad, UX y cierre |
+| **Dependencias** | HU-08 (guía de estilo) |
+| **Notas adicionales** | Cubre las pantallas de HU-01, HU-02, HU-03 y HU-27. Parte de la estrategia de involucramiento con los pequeños productores. |
+
+### Sprint 2 (semanas 3-4)
+
+#### HU-04: Registro de producción
+
+| Campo | Detalle |
+|-------|---------|
+| **Título** | Registro de producción |
+| **Historia de usuario** | **Como** productor,<br>**Quiero** registrar mi producción (cultivo, cantidad y fecha estimada de cosecha),<br>**Para** tener control de lo que voy a cosechar. |
+| **Criterios de aceptación** | 1. **Dado** que inicié sesión, **cuando** registro cultivo, cantidad y fecha estimada de cosecha y guardo, **entonces** el sistema almacena el registro.<br>2. **Dado** que dejo un campo vacío, **cuando** intento guardar, **entonces** el sistema muestra un mensaje claro que indica qué dato falta.<br>3. **Dado** que ingreso una fecha inválida, **cuando** intento guardar, **entonces** el sistema rechaza el registro y me indica cómo corregirlo. |
+| **Prioridad** | Must have (Alta) |
+| **Estimación** | 5 puntos de historia |
+| **Sprint** | 2 |
+| **Responsable** | Joshua / Lo prueba Fabio |
+| **Épica** | E2 – Registro de producción offline |
+| **Dependencias** | HU-02 (perfil), HU-03 (catálogo de cultivos) |
+| **Notas adicionales** | Insumo principal de las alertas (HU-18) y de la vinculación con compradores (HU-25). |
+
+#### HU-05: Listado de producción registrada
+
+| Campo | Detalle |
+|-------|---------|
+| **Título** | Listado de producción registrada |
+| **Historia de usuario** | **Como** productor,<br>**Quiero** ver el listado de mi producción registrada,<br>**Para** consultarla rápidamente. |
+| **Criterios de aceptación** | 1. **Dado** que tengo registros de producción, **cuando** abro el listado, **entonces** el sistema muestra todos mis registros.<br>2. **Dado** que veo el listado, **cuando** reviso el orden, **entonces** los registros aparecen ordenados por fecha de cosecha.<br>3. **Dado** que no tengo registros, **cuando** abro el listado, **entonces** el sistema muestra un mensaje que me invita a registrar mi producción. |
+| **Prioridad** | Must have (Alta) |
+| **Estimación** | 3 puntos de historia |
+| **Sprint** | 2 |
+| **Responsable** | Joshua / Lo prueba Fabio |
+| **Épica** | E2 – Registro de producción offline |
+| **Dependencias** | HU-04 (registro de producción) |
+| **Notas adicionales** | Solo se muestran los registros del usuario que inició sesión. |
+
+#### HU-06: Edición y eliminación de registros
+
+| Campo | Detalle |
+|-------|---------|
+| **Título** | Edición y eliminación de registros |
+| **Historia de usuario** | **Como** productor,<br>**Quiero** editar o eliminar un registro,<br>**Para** corregir errores o cambios. |
+| **Criterios de aceptación** | 1. **Dado** que tengo un registro de producción, **cuando** lo edito y guardo, **entonces** el sistema actualiza los datos.<br>2. **Dado** que quiero eliminar un registro, **cuando** selecciono eliminar, **entonces** el sistema me pide confirmación antes de borrarlo.<br>3. **Dado** que confirmé la eliminación, **cuando** vuelvo al listado, **entonces** el registro ya no aparece. |
+| **Prioridad** | Should have (Media) |
+| **Estimación** | 3 puntos de historia |
+| **Sprint** | 2 |
+| **Responsable** | Joshua / Lo prueba Fabio |
+| **Épica** | E2 – Registro de producción offline |
+| **Dependencias** | HU-04 (registro), HU-05 (listado) |
+| **Notas adicionales** | Al editar se aplican las mismas validaciones de HU-04. |
+
+#### HU-07: Registro y consulta de producción sin Internet
+
+| Campo | Detalle |
+|-------|---------|
+| **Título** | Registro y consulta de producción sin Internet |
+| **Historia de usuario** | **Como** productor,<br>**Quiero** registrar y consultar mi producción sin Internet,<br>**Para** usar la app en el campo. |
+| **Criterios de aceptación** | 1. **Dado** que mi dispositivo no tiene conexión, **cuando** creo un registro de producción, **entonces** el sistema lo guarda localmente.<br>2. **Dado** que no tengo conexión, **cuando** abro el listado o edito un registro, **entonces** puedo ver y modificar mis registros.<br>3. **Dado** que guardé registros sin conexión, **cuando** cierro y vuelvo a abrir la app, **entonces** los datos siguen disponibles. |
+| **Prioridad** | Must have (Alta) |
+| **Estimación** | 5 puntos de historia |
+| **Sprint** | 2 |
+| **Responsable** | Fabio / Lo prueba Joshua |
+| **Épica** | E2 – Registro de producción offline |
+| **Dependencias** | HU-04 (registro), HU-05 (listado) |
+| **Notas adicionales** | Núcleo del enfoque offline-first. La sincronización con el servidor se aborda en HU-09. |
+
+#### HU-12: Obtención de precios CENADA/SIMM
+
+| Campo | Detalle |
+|-------|---------|
+| **Título** | Obtención de precios CENADA/SIMM |
+| **Historia de usuario** | **Como** sistema,<br>**Quiero** obtener los precios publicados por CENADA/SIMM,<br>**Para** alimentar el análisis de IA. |
+| **Criterios de aceptación** | 1. **Dado** que hay precios publicados en la fuente, **cuando** se ejecuta el proceso de ingesta, **entonces** el sistema descarga y almacena los precios.<br>2. **Dado** que se completó una carga, **cuando** se consulta su registro, **entonces** se indica la fecha y la fuente de esa carga.<br>3. **Dado** que la fuente no está disponible, **cuando** se ejecuta la ingesta, **entonces** el sistema registra el error y conserva los datos previos. |
+| **Prioridad** | Must have (Alta) |
+| **Estimación** | 8 puntos de historia |
+| **Sprint** | 2 |
+| **Responsable** | Fabio / Lo prueba Joshua |
+| **Épica** | E4 – Datos de mercado CENADA/SIMM |
+| **Dependencias** | HU-16 (condiciones de uso de los datos) |
+| **Notas adicionales** | Insumo de HU-13 (histórico) y HU-17 (análisis de tendencias). Riesgo externo: cambios de acceso o formato de la fuente. |
+
+#### HU-15: Ingesta tolerante a cambios de formato
+
+| Campo | Detalle |
+|-------|---------|
+| **Título** | Ingesta tolerante a cambios de formato |
+| **Historia de usuario** | **Como** equipo,<br>**Quiero** que la ingesta tolere cambios de formato en la fuente,<br>**Para** que el motor de IA no se rompa. |
+| **Criterios de aceptación** | 1. **Dado** que la fuente cambia su formato, **cuando** se ejecuta la ingesta, **entonces** el proceso falla de forma controlada sin detener la aplicación.<br>2. **Dado** que la ingesta falló por formato, **cuando** se revisan los registros, **entonces** el error queda registrado con su detalle.<br>3. **Dado** que la ingesta falló, **cuando** se consultan los precios, **entonces** el sistema conserva y muestra los datos previos. |
+| **Prioridad** | Should have (Media) |
+| **Estimación** | 3 puntos de historia |
+| **Sprint** | 2 |
+| **Responsable** | Fabio / Lo prueba Joshua |
+| **Épica** | E4 – Datos de mercado CENADA/SIMM |
+| **Dependencias** | HU-12 (ingesta de precios) |
+| **Notas adicionales** | Plan de contingencia definido para el interesado crítico CENADA/PIMA. |
+
+### Sprint 3 (semanas 5-6)
+
+#### HU-09: Sincronización automática al recuperar conexión
+
+| Campo | Detalle |
+|-------|---------|
+| **Título** | Sincronización automática al recuperar conexión |
+| **Historia de usuario** | **Como** productor,<br>**Quiero** que mis datos se sincronicen automáticamente al recuperar conexión,<br>**Para** no perder información. |
+| **Criterios de aceptación** | 1. **Dado** que creé registros sin conexión, **cuando** el dispositivo detecta conexión, **entonces** el sistema envía esos registros al servidor automáticamente.<br>2. **Dado** que la sincronización se completó, **cuando** reviso los datos en el servidor, **entonces** no existen registros duplicados.<br>3. **Dado** que la conexión se pierde durante la sincronización, **cuando** vuelve la conexión, **entonces** el sistema reintenta sin perder datos. |
+| **Prioridad** | Must have (Alta) |
+| **Estimación** | 8 puntos de historia |
+| **Sprint** | 3 |
+| **Responsable** | Fabio / Lo prueba Joshua |
+| **Épica** | E3 – Sincronización |
+| **Dependencias** | HU-07 (registro offline) |
+| **Notas adicionales** | La resolución de conflictos se aborda en HU-11. |
+
+#### HU-10: Estado de sincronización visible
+
+| Campo | Detalle |
+|-------|---------|
+| **Título** | Estado de sincronización visible |
+| **Historia de usuario** | **Como** productor,<br>**Quiero** ver el estado de sincronización,<br>**Para** saber si mis datos están al día. |
+| **Criterios de aceptación** | 1. **Dado** que mis datos están al día, **cuando** veo el indicador, **entonces** muestra "sincronizado".<br>2. **Dado** que tengo registros sin enviar, **cuando** veo el indicador, **entonces** muestra "pendiente".<br>3. **Dado** que la sincronización falló, **cuando** veo el indicador, **entonces** muestra "error". |
+| **Prioridad** | Should have (Media) |
+| **Estimación** | 2 puntos de historia |
+| **Sprint** | 3 |
+| **Responsable** | Joshua / Lo prueba Fabio |
+| **Épica** | E3 – Sincronización |
+| **Dependencias** | HU-09 (sincronización) |
+| **Notas adicionales** | El indicador debe seguir la guía de estilo de HU-08 (ícono + texto simple). |
+
+#### HU-13: Histórico de precios por producto
+
+| Campo | Detalle |
+|-------|---------|
+| **Título** | Histórico de precios por producto |
+| **Historia de usuario** | **Como** sistema,<br>**Quiero** almacenar el histórico de precios por producto,<br>**Para** analizar tendencias y estacionalidad. |
+| **Criterios de aceptación** | 1. **Dado** que se cargan precios nuevos, **cuando** termina la ingesta, **entonces** se agregan al histórico sin borrar los anteriores.<br>2. **Dado** que existe histórico, **cuando** se consulta por producto, **entonces** se obtienen sus precios registrados.<br>3. **Dado** que existe histórico, **cuando** se consulta por rango de fechas, **entonces** se obtienen solo los precios de ese rango. |
+| **Prioridad** | Must have (Alta) |
+| **Estimación** | 5 puntos de historia |
+| **Sprint** | 3 |
+| **Responsable** | Fabio / Lo prueba Joshua |
+| **Épica** | E4 – Datos de mercado CENADA/SIMM |
+| **Dependencias** | HU-12 (ingesta de precios) |
+| **Notas adicionales** | Insumo directo de HU-17 (análisis de tendencias). |
+
+#### HU-14: Consulta de precios actuales del cultivo
+
+| Campo | Detalle |
+|-------|---------|
+| **Título** | Consulta de precios actuales del cultivo |
+| **Historia de usuario** | **Como** productor,<br>**Quiero** consultar los precios actuales de mi cultivo, incluso sin conexión,<br>**Para** decidir cuándo vender. |
+| **Criterios de aceptación** | 1. **Dado** que tengo un cultivo registrado, **cuando** consulto su precio, **entonces** el sistema muestra el último precio disponible.<br>2. **Dado** que veo el precio, **cuando** reviso el detalle, **entonces** aparece la fecha de la última actualización.<br>3. **Dado** que no tengo conexión, **cuando** consulto el precio, **entonces** el sistema muestra el último precio guardado en el dispositivo. |
+| **Prioridad** | Must have (Alta) |
+| **Estimación** | 3 puntos de historia |
+| **Sprint** | 3 |
+| **Responsable** | Joshua / Lo prueba Fabio |
+| **Épica** | E4 – Datos de mercado CENADA/SIMM |
+| **Dependencias** | HU-13 (histórico de precios), HU-07 (almacenamiento offline) |
+| **Notas adicionales** | Mostrar la fecha evita que el productor tome decisiones con precios desactualizados. |
+
+#### HU-17: Análisis de tendencias y estacionalidad de precios
+
+| Campo | Detalle |
+|-------|---------|
+| **Título** | Análisis de tendencias y estacionalidad de precios |
+| **Historia de usuario** | **Como** sistema,<br>**Quiero** analizar tendencias y estacionalidad de precios por cultivo,<br>**Para** generar recomendaciones de comercialización. |
+| **Criterios de aceptación** | 1. **Dado** que existe histórico suficiente de un cultivo, **cuando** se ejecuta el análisis, **entonces** el modelo identifica la tendencia (sube, baja o estable).<br>2. **Dado** que existe histórico suficiente, **cuando** se ejecuta el análisis, **entonces** el modelo identifica la estacionalidad del cultivo.<br>3. **Dado** que un cultivo no tiene datos suficientes, **cuando** se ejecuta el análisis, **entonces** el sistema lo indica en lugar de generar un resultado poco confiable.<br>4. **Dado** que el análisis se ejecutó, **cuando** se revisan los resultados, **entonces** quedan documentados para los cultivos del catálogo. |
+| **Prioridad** | Must have (Alta) |
+| **Estimación** | 8 puntos de historia |
+| **Sprint** | 3 |
+| **Responsable** | Joshua / Lo prueba Fabio |
+| **Épica** | E5 – Alertas con IA |
+| **Dependencias** | HU-13 (histórico de precios) |
+| **Notas adicionales** | Componente experimental; su precisión se ajusta iterativamente. Base de HU-18 (alertas). |
+
+### Sprint 4 (semanas 7-8)
+
+#### HU-11: Resolución de conflictos de sincronización
+
+| Campo | Detalle |
+|-------|---------|
+| **Título** | Resolución de conflictos de sincronización |
+| **Historia de usuario** | **Como** productor,<br>**Quiero** que los conflictos entre datos locales y del servidor se resuelvan sin perder información,<br>**Para** confiar en la app. |
+| **Criterios de aceptación** | 1. **Dado** que un mismo registro se modificó desde dos fuentes, **cuando** se sincroniza, **entonces** el sistema aplica una regla definida (p. ej. última modificación).<br>2. **Dado** que se resolvió un conflicto, **cuando** reviso el registro, **entonces** no se perdió información.<br>3. **Dado** que ocurrió un conflicto, **cuando** se revisan los registros del sistema, **entonces** queda constancia de cómo se resolvió. |
+| **Prioridad** | Should have (Media) |
+| **Estimación** | 5 puntos de historia |
+| **Sprint** | 4 |
+| **Responsable** | Fabio / Lo prueba Joshua |
+| **Épica** | E3 – Sincronización |
+| **Dependencias** | HU-09 (sincronización) |
+| **Notas adicionales** | La regla de resolución debe documentarse en la arquitectura. |
+
+#### HU-18: Alertas personalizadas de comercialización
+
+| Campo | Detalle |
+|-------|---------|
+| **Título** | Alertas personalizadas de comercialización |
+| **Historia de usuario** | **Como** productor,<br>**Quiero** recibir alertas personalizadas según mi cultivo y fecha estimada de cosecha,<br>**Para** vender en el mejor momento. |
+| **Criterios de aceptación** | 1. **Dado** que tengo una producción registrada y existen tendencias de su cultivo, **cuando** el sistema detecta una oportunidad, **entonces** genera una alerta.<br>2. **Dado** que se generó una alerta, **cuando** la veo, **entonces** incluye el cultivo, un mensaje claro y el momento sugerido para vender.<br>3. **Dado** que mi cultivo no tiene datos suficientes, **cuando** se evalúan alertas, **entonces** el sistema no genera alertas sin respaldo. |
+| **Prioridad** | Must have (Alta) |
+| **Estimación** | 8 puntos de historia |
+| **Sprint** | 4 |
+| **Responsable** | Joshua / Lo prueba Fabio |
+| **Épica** | E5 – Alertas con IA |
+| **Dependencias** | HU-04 (registro de producción), HU-17 (análisis de tendencias) |
+| **Notas adicionales** | Historia central del valor del producto (OE 2). |
+
+#### HU-19: Notificaciones de alertas
+
+| Campo | Detalle |
+|-------|---------|
+| **Título** | Notificaciones de alertas |
+| **Historia de usuario** | **Como** productor,<br>**Quiero** recibir notificaciones de las alertas,<br>**Para** enterarme a tiempo. |
+| **Criterios de aceptación** | 1. **Dado** que se generó una alerta y tengo conexión, **cuando** se envía, **entonces** llega como notificación a mi dispositivo.<br>2. **Dado** que se generó una alerta y no tengo conexión, **cuando** abro la app, **entonces** el sistema me muestra la alerta pendiente.<br>3. **Dado** que toco una notificación, **cuando** se abre la app, **entonces** me lleva al detalle de la alerta. |
+| **Prioridad** | Must have (Alta) |
+| **Estimación** | 5 puntos de historia |
+| **Sprint** | 4 |
+| **Responsable** | Fabio / Lo prueba Joshua |
+| **Épica** | E5 – Alertas con IA |
+| **Dependencias** | HU-18 (alertas personalizadas) |
+| **Notas adicionales** | Configuración de tipos y frecuencia en HU-20. |
+
+#### HU-23: Registro de compradores
+
+| Campo | Detalle |
+|-------|---------|
+| **Título** | Registro de compradores |
+| **Historia de usuario** | **Como** comprador,<br>**Quiero** registrarme indicando los productos que necesito,<br>**Para** encontrar proveedores. |
+| **Criterios de aceptación** | 1. **Dado** que soy un comprador sin cuenta, **cuando** completo nombre, tipo de comprador y productos de interés, **entonces** el sistema crea mi cuenta.<br>2. **Dado** que dejo un dato obligatorio vacío, **cuando** intento registrarme, **entonces** el sistema muestra un mensaje claro que indica qué falta.<br>3. **Dado** que ya me registré, **cuando** consulto mi perfil, **entonces** veo los productos de interés que indiqué. |
+| **Prioridad** | Must have (Alta) |
+| **Estimación** | 5 puntos de historia |
+| **Sprint** | 4 |
+| **Responsable** | Fabio / Lo prueba Joshua |
+| **Épica** | E6 – Vinculación productor-comprador |
+| **Dependencias** | HU-01 (mecanismo de cuentas), HU-03 (catálogo de cultivos) |
+| **Notas adicionales** | Aplica el mismo consentimiento de datos de HU-27. |
+
+#### HU-24: Publicación de demandas del comprador
+
+| Campo | Detalle |
+|-------|---------|
+| **Título** | Publicación de demandas del comprador |
+| **Historia de usuario** | **Como** comprador,<br>**Quiero** publicar una demanda (cultivo, cantidad y fecha),<br>**Para** que los productores la vean. |
+| **Criterios de aceptación** | 1. **Dado** que inicié sesión como comprador, **cuando** publico una demanda con cultivo, cantidad y fecha, **entonces** el sistema la guarda y la deja visible para productores.<br>2. **Dado** que tengo una demanda publicada, **cuando** la edito, **entonces** el sistema actualiza sus datos.<br>3. **Dado** que tengo una demanda publicada, **cuando** la cierro, **entonces** deja de mostrarse a los productores. |
+| **Prioridad** | Must have (Alta) |
+| **Estimación** | 3 puntos de historia |
+| **Sprint** | 4 |
+| **Responsable** | Fabio / Lo prueba Joshua |
+| **Épica** | E6 – Vinculación productor-comprador |
+| **Dependencias** | HU-23 (registro de compradores) |
+| **Notas adicionales** | Insumo de HU-25 (coincidencias). |
+
+### Sprint 5 (semanas 9-10)
+
+#### HU-20: Configuración de alertas
+
+| Campo | Detalle |
+|-------|---------|
+| **Título** | Configuración de alertas |
+| **Historia de usuario** | **Como** productor,<br>**Quiero** configurar qué alertas recibir y con qué frecuencia,<br>**Para** evitar saturación. |
+| **Criterios de aceptación** | 1. **Dado** que estoy en la configuración, **cuando** activo o desactivo un tipo de alerta, **entonces** el sistema respeta mi elección.<br>2. **Dado** que estoy en la configuración, **cuando** elijo una frecuencia, **entonces** las alertas se envían según esa frecuencia.<br>3. **Dado** que guardé mi configuración, **cuando** vuelvo a abrir la app, **entonces** la configuración se mantiene. |
+| **Prioridad** | Should have (Media) |
+| **Estimación** | 3 puntos de historia |
+| **Sprint** | 5 |
+| **Responsable** | Joshua / Lo prueba Fabio |
+| **Épica** | E5 – Alertas con IA |
+| **Dependencias** | HU-18 (alertas), HU-19 (notificaciones) |
+| **Notas adicionales** | Candidata a moverse si el sprint se atrasa (prioridad Should). |
+
+#### HU-25: Coincidencias entre producción y demanda
+
+| Campo | Detalle |
+|-------|---------|
+| **Título** | Coincidencias entre producción y demanda |
+| **Historia de usuario** | **Como** productor,<br>**Quiero** ver compradores cuya demanda coincide con mi producción,<br>**Para** contactarlos directamente. |
+| **Criterios de aceptación** | 1. **Dado** que tengo producción registrada y existen demandas publicadas, **cuando** consulto coincidencias, **entonces** el sistema lista las demandas compatibles por cultivo, cantidad aproximada y fecha.<br>2. **Dado** que hay varias coincidencias, **cuando** veo el listado, **entonces** aparecen ordenadas por relevancia.<br>3. **Dado** que no hay demandas compatibles, **cuando** consulto coincidencias, **entonces** el sistema me lo indica con un mensaje claro. |
+| **Prioridad** | Must have (Alta) |
+| **Estimación** | 8 puntos de historia |
+| **Sprint** | 5 |
+| **Responsable** | Joshua / Lo prueba Fabio |
+| **Épica** | E6 – Vinculación productor-comprador |
+| **Dependencias** | HU-04 (registro de producción), HU-24 (demandas publicadas) |
+| **Notas adicionales** | Historia central del OE 3. |
+
+#### HU-26: Expresar interés y contactar al comprador
+
+| Campo | Detalle |
+|-------|---------|
+| **Título** | Expresar interés y contactar al comprador |
+| **Historia de usuario** | **Como** productor,<br>**Quiero** expresar interés en una demanda y contactar al comprador,<br>**Para** concretar la venta fuera de la app. |
+| **Criterios de aceptación** | 1. **Dado** que veo una demanda compatible, **cuando** marco interés, **entonces** el sistema registra mi interés.<br>2. **Dado** que marqué interés, **cuando** se procesa, **entonces** el comprador recibe un aviso con mis datos de contacto autorizados.<br>3. **Dado** que ya marqué interés en una demanda, **cuando** la vuelvo a ver, **entonces** el sistema indica que ya expresé interés. |
+| **Prioridad** | Must have (Alta) |
+| **Estimación** | 3 puntos de historia |
+| **Sprint** | 5 |
+| **Responsable** | Joshua / Lo prueba Fabio |
+| **Épica** | E6 – Vinculación productor-comprador |
+| **Dependencias** | HU-25 (coincidencias) |
+| **Notas adicionales** | La venta se concreta fuera de la app; pagos y transacciones están fuera del alcance. Solo se comparten datos autorizados según HU-27. |
+
+#### HU-30: Pruebas de usabilidad con grupo piloto
+
+| Campo | Detalle |
+|-------|---------|
+| **Título** | Pruebas de usabilidad con grupo piloto |
+| **Historia de usuario** | **Como** equipo,<br>**Quiero** ejecutar pruebas de usabilidad con un grupo piloto de productores,<br>**Para** ajustar la app antes del cierre. |
+| **Criterios de aceptación** | 1. **Dado** que la app tiene sus funciones principales, **cuando** se prueba con un grupo piloto de productores, **entonces** se registran los resultados.<br>2. **Dado** que se obtuvieron resultados, **cuando** se analizan, **entonces** las mejoras identificadas quedan documentadas.<br>3. **Dado** que hay ajustes críticos, **cuando** se cierra la prueba, **entonces** esos ajustes quedan aplicados. |
+| **Prioridad** | Must have (Alta) |
+| **Estimación** | 5 puntos de historia |
+| **Sprint** | 5 |
+| **Responsable** | Joshua / Lo prueba Fabio |
+| **Épica** | E7 – Calidad, UX y cierre |
+| **Dependencias** | Incrementos de los Sprints 1 a 4 |
+| **Notas adicionales** | Parte de la estrategia de involucramiento con los pequeños productores. |
+
+#### HU-31: Pruebas funcionales y verificación de la DoD
+
+| Campo | Detalle |
+|-------|---------|
+| **Título** | Pruebas funcionales y verificación de la DoD |
+| **Historia de usuario** | **Como** equipo,<br>**Quiero** ejecutar pruebas funcionales y verificar la Definition of Done,<br>**Para** entregar un producto estable. |
+| **Criterios de aceptación** | 1. **Dado** que existen casos de prueba, **cuando** se ejecutan, **entonces** sus resultados quedan registrados.<br>2. **Dado** que se encontraron defectos críticos, **cuando** se cierra el sprint, **entonces** esos defectos están resueltos.<br>3. **Dado** que las historias están terminadas, **cuando** QA revisa, **entonces** se verifica el cumplimiento de la Definition of Done. |
+| **Prioridad** | Must have (Alta) |
+| **Estimación** | 5 puntos de historia |
+| **Sprint** | 5 |
+| **Responsable** | Fabio / Lo prueba Joshua |
+| **Épica** | E7 – Calidad, UX y cierre |
+| **Dependencias** | Historias funcionales del Sprint 5 |
+| **Notas adicionales** | La Definition of Done se detalla en la sección 09 del expediente. |
+
+#### HU-32: Manual breve de uso
+
+| Campo | Detalle |
+|-------|---------|
+| **Título** | Manual breve de uso |
+| **Historia de usuario** | **Como** usuario,<br>**Quiero** un manual breve de uso,<br>**Para** aprender a usar la app. |
+| **Criterios de aceptación** | 1. **Dado** que la app está terminada, **cuando** se elabora el manual, **entonces** este cubre las funciones principales.<br>2. **Dado** que el manual está listo, **cuando** lo consulto, **entonces** incluye capturas de pantalla de cada función.<br>3. **Dado** que soy un productor con poca experiencia digital, **cuando** leo el manual, **entonces** está escrito con lenguaje claro. |
+| **Prioridad** | Should have (Media) |
+| **Estimación** | 3 puntos de historia |
+| **Sprint** | 5 |
+| **Responsable** | Fabio / Lo prueba Joshua |
+| **Épica** | E7 – Calidad, UX y cierre |
+| **Dependencias** | Funciones principales terminadas |
+| **Notas adicionales** | Sigue la guía de lenguaje de HU-08. |
+
+#### HU-33: Demo y cierre del proyecto
+
+| Campo | Detalle |
+|-------|---------|
+| **Título** | Demo y cierre del proyecto |
+| **Historia de usuario** | **Como** equipo,<br>**Quiero** preparar la demo y el cierre del proyecto,<br>**Para** presentar resultados al docente. |
+| **Criterios de aceptación** | 1. **Dado** que el producto está estable, **cuando** se prepara la demo, **entonces** esta muestra las funciones principales.<br>2. **Dado** que la demo está lista, **cuando** se presenta, **entonces** el docente la recibe en la fecha del hito.<br>3. **Dado** que se cierra el proyecto, **cuando** se revisa la entrega, **entonces** el documento final y el repositorio están actualizados. |
+| **Prioridad** | Must have (Alta) |
+| **Estimación** | 2 puntos de historia |
+| **Sprint** | 5 |
+| **Responsable** | Joshua y Fabio / Revisión cruzada |
+| **Épica** | E7 – Calidad, UX y cierre |
+| **Dependencias** | HU-30, HU-31, HU-32 |
+| **Notas adicionales** | Cierre ante el interesado crítico Docente ISW-912. |
+
+### Stretch (Sprint 5, solo si el sprint va holgado)
+
+#### HU-21: Explicación de las alertas
+
+| Campo | Detalle |
+|-------|---------|
+| **Título** | Explicación de las alertas |
+| **Historia de usuario** | **Como** productor,<br>**Quiero** ver por qué se generó una alerta,<br>**Para** confiar en la recomendación. |
+| **Criterios de aceptación** | 1. **Dado** que recibí una alerta, **cuando** abro su detalle, **entonces** el sistema muestra en lenguaje claro el motivo (tendencia, estacionalidad o precio).<br>2. **Dado** que veo el motivo, **cuando** reviso el detalle, **entonces** se indica la fecha de los datos usados. |
+| **Prioridad** | Could have (Baja) |
+| **Estimación** | 3 puntos de historia |
+| **Sprint** | Stretch S5 |
+| **Responsable** | Joshua / Lo prueba Fabio |
+| **Épica** | E5 – Alertas con IA |
+| **Dependencias** | HU-18 (alertas personalizadas) |
+| **Notas adicionales** | Primera historia en salir del alcance si falta tiempo. |
+
+#### HU-22: Retroalimentación sobre la utilidad de las alertas
+
+| Campo | Detalle |
+|-------|---------|
+| **Título** | Retroalimentación sobre la utilidad de las alertas |
+| **Historia de usuario** | **Como** productor,<br>**Quiero** indicar si una alerta me fue útil,<br>**Para** mejorar futuras alertas. |
+| **Criterios de aceptación** | 1. **Dado** que recibí una alerta, **cuando** indico si me fue útil, **entonces** el sistema registra mi respuesta.<br>2. **Dado** que ya respondí, **cuando** vuelvo a ver la alerta, **entonces** se muestra la respuesta que di. |
+| **Prioridad** | Could have (Baja) |
+| **Estimación** | 2 puntos de historia |
+| **Sprint** | Stretch S5 |
+| **Responsable** | Joshua / Lo prueba Fabio |
+| **Épica** | E5 – Alertas con IA |
+| **Dependencias** | HU-18 (alertas personalizadas) |
+| **Notas adicionales** | Las respuestas pueden usarse para ajustar el modelo de HU-17. |
 
 ---
 
@@ -383,6 +837,7 @@ Con dos integrantes, los roles se comparten.
 | 0.2 | _(completar)_ | Joshua Quesada / José Fabio Oconitrillo | Segundo entregable | Unidad I: Acta de Inicio, definición del Scrum Team, Lean Canvas, EEFs y stakeholders (duración 14 semanas, ciclo adaptativo). |
 | 1.0 | 2026-10-07 | Joshua Quesada / José Fabio Oconitrillo | Unificación | Se unifican ambos entregables en un solo documento. Se agrega el Product Backlog completo y el plan de 5 sprints. |
 | 1.1 | 2026-10-07 | Joshua Quesada / José Fabio Oconitrillo | Reestructuración | El documento se reorganiza como Expediente del Proyecto (secciones 00 a 12). Las secciones 07, 08, 09 y 12 quedan solo con título hasta que correspondan. Se retiran del documento la Definition of Done, los eventos Scrum y la tabla de riesgos, que se incorporarán en sus secciones (09, 04 y 08) cuando se trabajen. |
+| 1.2 | 2026-10-21 | Joshua Quesada / José Fabio Oconitrillo | Historias de usuario | En la sección 06, las tablas de criterios de aceptación por sprint se reemplazan por la ficha detallada de las 33 historias: formato Como/Quiero/Para, criterios Dado/cuando/entonces, prioridad, estimación, sprint, responsable, épica, dependencias y notas. |
 
 ### Decisiones y ajustes registrados
 
@@ -392,6 +847,7 @@ Con dos integrantes, los roles se comparten.
 - **Poder/Interés:** se adopta la escala numérica 1-5 del taller (v0.1) en lugar de Alta/Media/Baja del acta (v0.2).
 - **Mapa Poder-Interés:** se corrige la numeración, que no coincidía con el registro.
 - **Código del curso:** se corrige a ISW-912 en todo el documento.
+- **Historias de usuario:** se documentan con formato estándar Como/Quiero/Para y criterios Dado/cuando/entonces, manteniendo la asignación de responsables y sprints de la sección 05.
 
 ### Evidencias
 
