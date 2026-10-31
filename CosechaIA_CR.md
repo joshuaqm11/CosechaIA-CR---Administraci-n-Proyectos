@@ -13,8 +13,8 @@
 | Curso | ISW-912 · Administración de Proyectos Informáticos |
 | Institución | UTN Sede San Carlos |
 | Periodo | III Cuatrimestre 2026 |
-| Docente / patrocinador | Docente del curso ISW-912 |
-| Versión del expediente | 1.2 |
+| Docente | Yesenia Calvo |
+| Versión del expediente | 1.3 |
 
 **Integrantes**
 
@@ -171,6 +171,12 @@ Duración total: 10 semanas, divididas en 5 sprints de 2 semanas.
 
 **Entregable del sprint:** app base con inicio de sesión, perfil y mockups validados.
 
+**Seguimiento:** el Sprint Backlog 1 está cargado en el Tablero de Trabajo de Trello (sección 10).
+
+### Eventos Scrum
+
+Los eventos de Scrum (Sprint Planning, Daily, Refinamiento, Sprint Review y Retrospectiva), con su frecuencia, duración, participantes y canal, se definen en el **Plan de Comunicaciones** (sección 10), porque son a la vez los principales eventos de comunicación del equipo.
+
 ---
 
 ## 05. Backlog inicial y Sprint Backlog
@@ -228,7 +234,7 @@ Duración total: 10 semanas, divididas en 5 sprints de 2 semanas.
 | HU-21 | E5 | Como productor, quiero ver por qué se generó una alerta, para confiar en la recomendación. | Could | 3 | Stretch S5 | J |
 | HU-22 | E5 | Como productor, quiero indicar si una alerta me fue útil, para mejorar futuras alertas. | Could | 2 | Stretch S5 | J |
 
-**Total:** 33 historias · 143 SP comprometidos en 5 sprints + 5 SP en stretch.
+**Total:** 33 historias · 131 SP comprometidos en 5 sprints + 5 SP en stretch (136 SP en total).
 
 ### Distribución por sprint
 
@@ -238,7 +244,8 @@ Duración total: 10 semanas, divididas en 5 sprints de 2 semanas.
 | 2 | 3-4 | HU-04, 05, 06, 07, 12, 15 | 27 |
 | 3 | 5-6 | HU-09, 10, 13, 14, 17 | 26 |
 | 4 | 7-8 | HU-11, 18, 19, 23, 24 | 26 |
-| 5 | 9-10 | HU-20, 25, 26, 30, 31, 32, 33 (+ stretch HU-21, 22) | 31 |
+| 5 | 9-10 | HU-20, 25, 26, 30, 31, 32, 33 (+ stretch HU-21, 22) | 29 (+5 stretch) |
+| **Total** | | **31 historias + 2 stretch** | **131 (+5 stretch)** |
 
 > La velocidad real se calibrará al cierre del Sprint 1. Si hay desviación, el alcance (no la fecha) se ajusta, moviendo primero las historias Should y Could.
 
@@ -254,6 +261,7 @@ Duración total: 10 semanas, divididas en 5 sprints de 2 semanas.
 | HU-16 | Documento de condiciones de uso de datos CENADA/SIMM | 2 | F |
 | HU-27 | Pantalla de consentimiento de datos personales | 3 | J |
 | HU-29 | Mockups validados con productores | 3 | J |
+| **Total** | | **23** | |
 
 ---
 
@@ -797,6 +805,26 @@ Cada historia sigue el formato **Como / Quiero / Para**, con criterios de acepta
 
 ## 09. Calidad y Definition of Done
 
+### Definition of Done (DoD)
+
+Una historia de usuario está **Hecha** solo cuando cumple los siete puntos. La DoD es la misma para todo el proyecto; lo que cambia por historia son sus criterios de aceptación.
+
+| # | Criterio | Quién lo verifica | Columna del tablero donde se verifica |
+|:-:|----------|-------------------|---------------------------------------|
+| 1 | Se cumplen todos los criterios de aceptación de la historia. | Developer responsable | Sale de *En progreso* |
+| 2 | El código está en el repositorio e integrado a la rama `develop` mediante un pull request revisado por el otro integrante. | Integrante que no desarrolló | Sale de *En progreso* |
+| 3 | La probó el integrante que no la desarrolló (pruebas cruzadas) y no hay defectos críticos abiertos. | Probador (QA cruzado) | Sale de *En pruebas cruzadas* |
+| 4 | Corre en emulador o dispositivo y, cuando la historia lo exige, funciona sin conexión. | Probador | Sale de *En pruebas cruzadas* |
+| 5 | Las pantallas cumplen la guía de estilo de HU-08 (íconos, letra legible, lenguaje claro). | Probador | Sale de *En pruebas cruzadas* |
+| 6 | La documentación que corresponda está actualizada (README, arquitectura o expediente). | Developer responsable | Sale de *Revisión PO* |
+| 7 | El Product Owner la aceptó frente a sus criterios de aceptación. | Product Owner (Joshua) | Entra a *Hecho* |
+
+**Historias documentales o de investigación** (HU-16, HU-29 y similares): los puntos 2 y 4 se cumplen con el entregable subido al repositorio y revisado por el otro integrante; el punto 5 aplica solo si el entregable incluye pantallas.
+
+**Aceptación cuando el PO es el autor:** si Joshua desarrolló la historia, Fabio la prueba y Joshua la acepta frente a los criterios escritos; la aceptación queda registrada como comentario en la tarjeta. Así se evita que alguien apruebe su propio trabajo sin una revisión independiente.
+
+**Verificación al cierre:** en la Sprint Review solo se presentan historias en *Hecho*. Una historia que no cumple la DoD vuelve al Product Backlog y no suma puntos a la velocidad del sprint. HU-31 verifica formalmente el cumplimiento de la DoD en el Sprint 5.
+
 ---
 
 ## 10. Comunicación y responsabilidades del equipo
@@ -825,6 +853,137 @@ Con dos integrantes, los roles se comparten.
 - José Fabio Oconitrillo lideró la valoración de los interesados institucionales y de datos (CENADA/PIMA, MAG, UTN).
 - La decisión sobre el enfoque de gestión (Híbrido) y la selección de los tres interesados críticos se tomaron en conjunto.
 
+### Plan de Comunicaciones
+
+#### Interesados, información que necesitan, frecuencia, canal y responsable
+
+Se parte del registro de interesados de la sección 03 (poder e interés en escala 1-5).
+
+| # | Interesado | Poder / Interés | Qué información necesita | Frecuencia y evento | Canal | Responsable |
+|---|------------|:---------------:|--------------------------|---------------------|-------|-------------|
+| 1 | Pequeños productores agrícolas | 2 / 5 | Qué hará la app, mockups para validar, avances que los afectan y resultados de las pruebas. | Sprint 1: sesión de validación de mockups (HU-29). Sprint 5: prueba piloto (HU-30). Aviso puntual cuando haya algo que validar. | Visita de campo o reunión presencial; WhatsApp para coordinar. | Joshua |
+| 2 | Compradores formales | 3 / 3 | Alcance del módulo de vinculación y cómo publicar demandas. | Sprint 4 (registro de compradores y demandas, HU-23/24) y Sprint 5 (coincidencias). | Correo o llamada. | Fabio |
+| 3 | Intermediarios tradicionales | 2 / 3 | No se les envía información programada; se monitorea su postura. | Se registran observaciones durante las visitas de campo. | Observación en campo. | Joshua |
+| 4 | CENADA / PIMA — SIMM | 4 / 2 | Uso que el proyecto hará de sus datos; consulta sobre condiciones de uso. | Sprint 1: consulta formal (HU-16). Después, solo si cambia el acceso o el formato de la fuente. | Correo formal. | Fabio |
+| 5 | Transportistas / logística | 2 / 2 | Ninguna planificada (logística fuera del alcance). | Solo monitoreo. | — | Joshua |
+| 6 | MAG, extensionistas y asociaciones | 4 / 3 | Objetivo del proyecto; apoyo para contactar productores para la validación y el piloto. | Sprint 1 (antes de HU-29) y Sprint 5 (antes de HU-30). | Correo formal o reunión. | Fabio |
+| 7 | Equipo de desarrollo | 5 / 5 | Avance, impedimentos, decisiones técnicas y estado de cada historia. | Diario (Daily) y eventos Scrum de cada sprint (ver tabla siguiente). | Tablero de Trello, WhatsApp del equipo, repositorio (pull requests) y videollamada. | Fabio (SM) |
+| 8 | UTN — Sede San Carlos | 3 / 2 | Cumplimiento del curso y uso adecuado del nombre institucional. | Al cierre del proyecto, a través del docente. | Por medio del docente. | Fabio |
+| 9 | Docente ISW-912 | 5 / 5 | Avance contra el plan, entregables de cada hito, cambios de alcance y riesgos. | Cada entregable o hito del curso; informe breve al cierre de cada sprint; aviso inmediato ante cambios de alcance. | Plataforma oficial del curso y correo institucional; acceso de lectura al tablero de Trello. | Joshua (PM) |
+
+#### Eventos de comunicación del equipo (eventos Scrum)
+
+| Evento | Frecuencia | Duración máx. | Participantes | Propósito | Canal | Facilita |
+|--------|------------|:-------------:|---------------|-----------|-------|----------|
+| Sprint Planning | Primer día de cada sprint (cada 2 semanas) | 1 h | Equipo | Definir el Sprint Goal y pasar historias del Product Backlog al Sprint Backlog. | Videollamada + Trello | Fabio (SM) |
+| Daily Scrum | Días hábiles, horario acordado por el equipo | 15 min | Equipo | Qué hice, qué haré y qué me bloquea; revisar límites WIP del tablero. | Videollamada o WhatsApp (nota de voz/texto si no coinciden) | Fabio (SM) |
+| Refinamiento del backlog | Una vez por semana | 30 min | Equipo | Revisar, estimar y ordenar las historias de los próximos sprints. | Videollamada + Trello | Joshua (PO) |
+| Sprint Review | Último día de cada sprint | 45 min | Equipo; docente cuando coincide con un hito | Mostrar el incremento terminado (solo historias en *Hecho*). | Presencial o videollamada | Joshua (PO) |
+| Retrospectiva | Después de cada Review | 30 min | Equipo | Mejorar la forma de trabajo; acordar una acción concreta. | Videollamada | Fabio (SM) |
+| Informe de avance al docente | Al cierre de cada sprint | — | PM → docente | Resumen: Sprint Goal, historias terminadas, SP logrados, riesgos e impedimentos. | Plataforma del curso o correo + enlace al tablero | Joshua (PM) |
+
+#### Reglas del equipo
+
+**Tiempos de respuesta**
+
+| Tipo de mensaje | Canal | Tiempo máximo de respuesta |
+|-----------------|-------|----------------------------|
+| Impedimento que bloquea una historia (mensaje con "BLOQUEO") | WhatsApp del equipo | 4 horas en días hábiles |
+| Mensaje ordinario del equipo | WhatsApp o comentario en Trello | 12 horas |
+| Revisión de un pull request | Repositorio | 24 horas |
+| Correo del docente o de un interesado externo | Correo | 24 horas hábiles |
+
+**Dónde se decide qué**
+
+| Tipo de decisión | Quién decide | Dónde se decide | Dónde queda registrada |
+|------------------|--------------|-----------------|------------------------|
+| Prioridad y orden del Product Backlog | Product Owner (Joshua) | Refinamiento / Sprint Planning | Tablero de Trello (orden de la lista Product Backlog) |
+| Qué entra al sprint y cómo se reparte el trabajo | Equipo | Sprint Planning | Tablero (Sprint Backlog) |
+| Decisiones técnicas y de arquitectura | Equipo (Developers) | Daily o pull request | Repositorio (README / arquitectura) |
+| Aceptación de una historia | Product Owner | Columna *Revisión PO* | Comentario en la tarjeta |
+| Mejoras al proceso | Equipo | Retrospectiva | Expediente, sección 11 |
+| Cambios de alcance que afectan un hito o entregable | Equipo, con aval del docente | Reunión del equipo + consulta al docente | Expediente, sección 11 (bitácora y decisiones) |
+
+Ninguna decisión se da por tomada solo en una conversación de WhatsApp: si afecta el producto o el plan, se registra en el tablero o en el expediente.
+
+#### Escalamiento de impedimentos
+
+| Nivel | Qué se hace | Quién | Plazo |
+|:-----:|-------------|-------|-------|
+| 1 | El developer reporta el impedimento en la Daily o en WhatsApp con la palabra "BLOQUEO", marca la tarjeta con la etiqueta roja y explica el motivo en un comentario. | Developer afectado | En cuanto ocurre |
+| 2 | El Scrum Master gestiona el impedimento (busca información, reorganiza el trabajo, pide apoyo). | Fabio (SM) | 24 horas |
+| 3 | Si pone en riesgo el Sprint Goal, el PO ajusta el alcance del sprint: se mueven primero las historias Could y luego las Should. | Joshua (PO) | En la siguiente Daily |
+| 4 | Si afecta un hito o entregable del curso, el PM informa al docente con la causa y una propuesta de ajuste. | Joshua (PM) | 48 horas |
+
+Impedimentos externos previstos: si la fuente CENADA/SIMM cambia de formato o de acceso, se aplica el plan de contingencia de HU-15 y se informa al docente si afecta el plan.
+
+#### Escalamiento de conflictos
+
+| Nivel | Qué se hace | Quién |
+|:-----:|-------------|-------|
+| 1 | Conversación directa entre los dos integrantes, centrada en el problema y no en la persona, en un plazo máximo de 24 horas. | Ambos |
+| 2 | Si no se resuelve, se trata en una sesión facilitada. La facilita el Scrum Master; si el conflicto involucra al Scrum Master en ese rol, la facilita el PM. Se decide con base en el Product Goal, la DoD y los criterios de aceptación. | Fabio (SM) o Joshua (PM) |
+| 3 | Si persiste o afecta la entrega, se consulta al docente como mediador y su decisión es final. | Equipo → docente |
+
+Los conflictos de prioridad del producto los decide el Product Owner; los conflictos técnicos, el equipo con evidencia (prueba de concepto o criterio de la arquitectura).
+
+### Tablero de Trabajo
+
+**Enlace al tablero:** [CosechaIA CR — Tablero de Trabajo (ISW-912)](https://trello.com/b/tDK73VQt/cosechaia-cr-tablero-de-trabajo-isw-912) — Trello, cuenta del equipo (administrador: Joshua Quesada).
+
+#### Columnas y su significado (alineadas con la DoD)
+
+| Columna | Qué significa | Para entrar a esta columna |
+|---------|---------------|----------------------------|
+| 📘 Reglas del tablero | Tarjetas de referencia: columnas, límites WIP, DoD y etiquetas. No es una etapa del flujo. | — |
+| Product Backlog | Historias priorizadas (MoSCoW) que aún no están en un sprint. Las ordena el PO. | HU con formato Como/Quiero/Para, SP y prioridad. |
+| Sprint Backlog (Por hacer) | Historias comprometidas en la Sprint Planning para el Sprint Goal vigente. | Criterios de aceptación definidos y dependencias identificadas. |
+| En progreso · WIP 2 | Alguien construye la historia, en una rama propia. | Tiene responsable asignado. |
+| En pruebas cruzadas · WIP 2 | La prueba el integrante que no la desarrolló. | DoD 1 y 2: criterios autoverificados y pull request abierto. |
+| Revisión PO · WIP 2 | El PO verifica valor y criterios de aceptación. | DoD 3, 4 y 5: pruebas cruzadas aprobadas, funciona en dispositivo/sin conexión y guía de estilo aplicada. |
+| Hecho ✅ | Incremento terminado, integrado y aceptado. | DoD completa (1 a 7). |
+
+Si una historia se rechaza en pruebas o en revisión, vuelve a *En progreso* con un comentario que explica el motivo.
+
+#### Límites WIP y su justificación
+
+| Columna | Límite WIP | Justificación |
+|---------|:----------:|---------------|
+| Product Backlog | Sin límite | Es un inventario priorizado; no hay trabajo en curso. |
+| Sprint Backlog | Sin límite (lo fija la capacidad del sprint, 23-29 SP) | El límite real es el compromiso de la Sprint Planning. |
+| En progreso | 2 | Hay 2 developers: una historia por persona. Evita la multitarea y obliga a terminar antes de empezar otra. |
+| En pruebas cruzadas | 2 | Cada uno prueba lo del otro, como máximo una historia por persona. Si la columna está llena, se prueba antes de seguir desarrollando. |
+| Revisión PO | 2 | El PO es una sola persona que además desarrolla; más de 2 historias esperando aceptación crean un cuello de botella al final del sprint. |
+| Hecho | Sin límite | Columna final. |
+
+Cuando una columna llega a su límite no se agrega otra tarjeta: el equipo ayuda a vaciar la columna siguiente. Trello no bloquea el límite automáticamente, así que el Scrum Master lo revisa en cada Daily.
+
+#### Historias del Sprint Backlog 1 cargadas
+
+Las 8 historias del Sprint 1 (23 SP) están en la columna *Sprint Backlog*. Cada tarjeta incluye la historia, SP, prioridad, épica, dependencias, quién la prueba, un checklist con sus criterios de aceptación y un checklist con la Definition of Done. Las 25 historias restantes (Sprints 2 a 5 y stretch) están en *Product Backlog*.
+
+| HU | Tarjeta | SP | Responsable | Prueba |
+|----|---------|:--:|-------------|--------|
+| HU-28 | Repositorio, arquitectura base y flujo de trabajo | 5 | Ambos | Revisión cruzada |
+| HU-08 | Interfaz con íconos y lenguaje claro (guía de estilo) | 3 | Joshua | Fabio |
+| HU-29 | Validar mockups con productores de San Carlos | 3 | Joshua | Fabio |
+| HU-16 | Condiciones de uso de datos CENADA/SIMM | 2 | Fabio | Joshua |
+| HU-01 | Crear cuenta e iniciar sesión | 3 | Fabio | Joshua |
+| HU-27 | Consentimiento de uso de datos personales | 3 | Joshua | Fabio |
+| HU-02 | Perfil del productor | 2 | Fabio | Joshua |
+| HU-03 | Catálogo de cultivos | 2 | Joshua | Fabio |
+| **Total** | | **23** | | |
+
+#### Responsable visible por tarjeta
+
+- El nombre de cada tarjeta termina con 👤 y el responsable (Joshua, Fabio o Ambos).
+- Las tarjetas del sprint en curso llevan una etiqueta de color: morado = Joshua, azul = Fabio, verde = Ambos. Rojo = Bloqueado; amarillo = Should; naranja = Could.
+- Cada integrante se asigna como miembro de sus tarjetas en Trello.
+
+#### Regla para mover una tarjeta a "Hecho"
+
+Una tarjeta solo pasa a **Hecho ✅** cuando su checklist de criterios de aceptación y su checklist de Definition of Done (sección 09) están completos. **Solo el Product Owner la mueve**, después de aceptarla, y deja un comentario de aceptación en la tarjeta. Si la historia la desarrolló el propio PO, la prueba Fabio antes de la aceptación.
+
 ---
 
 ## 11. Decisiones, cambios y evidencias — integración final
@@ -838,6 +997,7 @@ Con dos integrantes, los roles se comparten.
 | 1.0 | 2026-10-07 | Joshua Quesada / José Fabio Oconitrillo | Unificación | Se unifican ambos entregables en un solo documento. Se agrega el Product Backlog completo y el plan de 5 sprints. |
 | 1.1 | 2026-10-07 | Joshua Quesada / José Fabio Oconitrillo | Reestructuración | El documento se reorganiza como Expediente del Proyecto (secciones 00 a 12). Las secciones 07, 08, 09 y 12 quedan solo con título hasta que correspondan. Se retiran del documento la Definition of Done, los eventos Scrum y la tabla de riesgos, que se incorporarán en sus secciones (09, 04 y 08) cuando se trabajen. |
 | 1.2 | 2026-10-21 | Joshua Quesada / José Fabio Oconitrillo | Historias de usuario | En la sección 06, las tablas de criterios de aceptación por sprint se reemplazan por la ficha detallada de las 33 historias: formato Como/Quiero/Para, criterios Dado/cuando/entonces, prioridad, estimación, sprint, responsable, épica, dependencias y notas. |
+| 1.3 | 2026-10-31 | Joshua Quesada / José Fabio Oconitrillo | Trabajo colaborativo | Se agregan a la sección 10 el Plan de Comunicaciones (interesados, información, frecuencia, canal, responsable, reglas del equipo y escalamiento) y el Tablero de Trabajo en Trello (columnas, límites WIP, Sprint Backlog 1, responsables y regla de "Hecho"). Se redacta la Definition of Done (sección 09) y se referencian los eventos Scrum en la sección 04. Se corrigen los totales de puntos de historia. |
 
 ### Decisiones y ajustes registrados
 
@@ -848,10 +1008,16 @@ Con dos integrantes, los roles se comparten.
 - **Mapa Poder-Interés:** se corrige la numeración, que no coincidía con el registro.
 - **Código del curso:** se corrige a ISW-912 en todo el documento.
 - **Historias de usuario:** se documentan con formato estándar Como/Quiero/Para y criterios Dado/cuando/entonces, manteniendo la asignación de responsables y sprints de la sección 05.
+- **Puntos de historia (v1.3):** se corrige el total del Sprint 5 de 31 a **29 SP** (HU-20 3 + HU-25 8 + HU-26 3 + HU-30 5 + HU-31 5 + HU-32 3 + HU-33 2) y el total comprometido de 143 a **131 SP** (23 + 27 + 26 + 26 + 29), más 5 SP de stretch.
+- **Herramienta de seguimiento:** se adopta Trello como Tablero de Trabajo, con límite WIP de 2 en las columnas activas.
+- **Aceptación de historias:** solo el PO mueve tarjetas a "Hecho"; si el autor es el PO, la prueba primero el otro integrante.
 
 ### Evidencias
 
-_(Pendiente de registrar)_
+| Evidencia | Ubicación |
+|-----------|-----------|
+| Tablero de Trabajo (Trello) con Sprint Backlog 1 cargado | [CosechaIA CR — Tablero de Trabajo (ISW-912)](https://trello.com/b/tDK73VQt/cosechaia-cr-tablero-de-trabajo-isw-912) |
+| Capturas del tablero y de una tarjeta con sus checklists | _(pendiente de adjuntar)_ |
 
 ---
 
