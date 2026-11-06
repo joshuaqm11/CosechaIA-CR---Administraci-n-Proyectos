@@ -797,6 +797,148 @@ Cada historia sigue el formato **Como / Quiero / Para**, con criterios de acepta
 
 ## 07. Planificación temporal, estimaciones y costos
 
+### Matriz de Estimación
+
+#### Escala e historia de referencia
+
+- **Escala:** puntos de historia (SP) con Fibonacci (1, 2, 3, 5, 8), estimados por planning poker entre los dos integrantes.
+- **Historia de referencia (3 SP):** HU-05 — Listado de producción registrada. Las demás historias se estiman comparándolas con ella.
+
+#### Tabla de estimación
+
+| ID | Historia (resumen) | SP | Prioridad | Dependencias |
+|----|--------------------|:--:|-----------|--------------|
+| HU-28 | Repositorio y arquitectura base | 5 | Must | Ninguna |
+| HU-01 | Crear cuenta e iniciar sesión | 3 | Must | HU-28 |
+| HU-02 | Perfil del productor | 2 | Must | HU-01 |
+| HU-03 | Catálogo de cultivos | 2 | Must | HU-28 |
+| HU-08 | Interfaz con íconos y lenguaje claro | 3 | Must | Se valida con HU-29 |
+| HU-16 | Condiciones de uso de datos CENADA/SIMM | 2 | Must | Ninguna |
+| HU-27 | Consentimiento de datos personales | 3 | Must | HU-28 |
+| HU-29 | Validar mockups con productores | 3 | Must | HU-08 |
+| HU-04 | Registro de producción | 5 | Must | HU-02, HU-03 |
+| HU-05 | Listado de producción | 3 | Must | HU-04 |
+| HU-06 | Editar y eliminar registros | 3 | Should | HU-04, HU-05 |
+| HU-07 | Producción sin Internet | 5 | Must | HU-04, HU-05 |
+| HU-12 | Obtención de precios CENADA/SIMM | 8 | Must | HU-16 |
+| HU-15 | Ingesta tolerante a cambios de formato | 3 | Should | HU-12 |
+| HU-09 | Sincronización automática | 8 | Must | HU-07 |
+| HU-10 | Estado de sincronización | 2 | Should | HU-09 |
+| HU-13 | Histórico de precios | 5 | Must | HU-12 |
+| HU-14 | Precios actuales del cultivo | 3 | Must | HU-13, HU-07 |
+| HU-17 | Tendencias y estacionalidad | 8 | Must | HU-13 |
+| HU-11 | Conflictos de sincronización | 5 | Should | HU-09 |
+| HU-18 | Alertas personalizadas | 8 | Must | HU-04, HU-17 |
+| HU-19 | Notificaciones de alertas | 5 | Must | HU-18 |
+| HU-23 | Registro de compradores | 5 | Must | HU-01, HU-03 |
+| HU-24 | Publicación de demandas | 3 | Must | HU-23 |
+| HU-20 | Configuración de alertas | 3 | Should | HU-18, HU-19 |
+| HU-25 | Coincidencias producción-demanda | 8 | Must | HU-04, HU-24 |
+| HU-26 | Expresar interés y contactar | 3 | Must | HU-25 |
+| HU-30 | Pruebas de usabilidad (piloto) | 5 | Must | Incrementos S1-S4 |
+| HU-31 | Pruebas funcionales y DoD | 5 | Must | Historias funcionales S5 |
+| HU-32 | Manual breve de uso | 3 | Should | Funciones principales |
+| HU-33 | Demo y cierre | 2 | Must | HU-30, HU-31, HU-32 |
+| HU-21 | Explicación de las alertas | 3 | Could | HU-18 |
+| HU-22 | Retroalimentación de alertas | 2 | Could | HU-18 |
+
+#### Total del backlog y desglose por épica
+
+| Épica | Historias | SP |
+|-------|:---------:|:--:|
+| E1 Cuenta, perfil y privacidad | 3 | 8 |
+| E2 Registro de producción offline | 5 | 18 |
+| E3 Sincronización | 3 | 15 |
+| E4 Datos de mercado CENADA/SIMM | 5 | 21 |
+| E5 Alertas con IA | 6 | 29 (24 + 5 stretch) |
+| E6 Vinculación productor-comprador | 4 | 19 |
+| E7 Calidad, UX y cierre | 7 | 26 |
+| **Total** | **33** | **136** (131 comprometidos + 5 stretch) |
+
+#### Supuestos y riesgos de la estimación
+
+| Supuesto o riesgo | Respuesta |
+|-------------------|-----------|
+| El equipo no tiene velocidad histórica. | La velocidad se calibra al cierre del Sprint 1. |
+| Los datos del CENADA/SIMM pueden cambiar de acceso o formato. | HU-15 (ingesta tolerante a cambios de formato). |
+| El componente de IA (HU-17, HU-18) es experimental. | Se revisa en el refinamiento antes de su sprint. |
+| La sincronización offline-first agrega incertidumbre técnica. | HU-11 es Should y puede moverse. |
+| Los roles son compartidos en un equipo de 2. | Si hay desviación, se ajusta el alcance y no la fecha. |
+| Se usa infraestructura gratuita o de código abierto. | Restricción de la sección 02. |
+
+#### Velocidad inicial y cómo se actualizará
+
+- **Velocidad inicial:** 26 SP por sprint (131 SP ÷ 5 sprints). La carga planificada va de 23 a 29 SP por sprint.
+- **Actualización:** la velocidad real (SP en *Hecho* que cumplen la DoD) se calibra al cierre del Sprint 1 y se revisa en cada Sprint Review. Si hay desviación, se ajusta el alcance (no la fecha), moviendo primero las historias Should y Could.
+
+#### Historias de más de 8 puntos
+
+Ninguna historia supera los 8 SP, así que ninguna se marca para dividirse.
+
+---
+
+### Cronograma de Entregas (Release Plan)
+
+#### Duración del sprint y fecha de inicio
+
+- **Duración del sprint:** 2 semanas. Total: 10 semanas, 5 sprints.
+- **Fecha de inicio del Sprint 1:** lunes 5 de octubre de 2026.
+- **Fin del Sprint 5:** viernes 11 de diciembre de 2026 (semana del 7 al 13 de diciembre).
+
+#### Sprints necesarios
+
+| Velocidad | SP/sprint | Cálculo | Sprints |
+|-----------|:---------:|---------|:-------:|
+| Mínima | 23 | 131 ÷ 23 = 5,7 | 6 |
+| Máxima | 29 | 131 ÷ 29 = 4,5 | 5 |
+
+**Rango: entre 5 y 6 sprints.** Como el plazo es fijo en 5 sprints, con la velocidad mínima se ajusta el alcance moviendo primero las historias Should y Could.
+
+#### Incremento por sprint
+
+| Sprint | Semanas | Fechas | Historias | SP | Incremento |
+|:------:|:-------:|--------|-----------|:--:|------------|
+| 1 | 1-2 | 5 oct – 16 oct | HU-28, 01, 02, 03, 08, 16, 27, 29 | 23 | App base con inicio de sesión, perfil y mockups validados. |
+| 2 | 3-4 | 19 oct – 30 oct | HU-04, 05, 06, 07, 12, 15 | 27 | Registro y consulta de producción sin conexión, e ingesta de precios del CENADA/SIMM. |
+| 3 | 5-6 | 2 nov – 13 nov | HU-09, 10, 13, 14, 17 | 26 | Sincronización de datos al volver la conexión y primer análisis de tendencias de precios. |
+| 4 | 7-8 | 16 nov – 27 nov | HU-11, 18, 19, 23, 24 | 26 | Alertas personalizadas al productor; registro de compradores y publicación de demanda. |
+| 5 | 9-10 | 30 nov – 11 dic | HU-20, 25, 26, 30, 31, 32, 33 (+ stretch HU-21, 22) | 29 (+5) | Oferta y demanda conectadas, validación con productores y producto estable y documentado. |
+| **Total** | | | **31 + 2 stretch** | **131 (+5)** | |
+
+#### Hitos de entrega
+
+| Hito | Cuándo | Con quién |
+|------|--------|-----------|
+| Validación de mockups (HU-29) | Sprint 1 | Productores de San Carlos |
+| Sprint Review con el incremento | Último día de cada sprint | Equipo; docente cuando coincide con un hito |
+| Prueba piloto (HU-30) | Sprint 5 | Grupo piloto de productores |
+| Demo y cierre del proyecto (HU-33) | Sprint 5 | Docente |
+
+#### Costo estimado por sprint y total del release
+
+El proyecto no tiene presupuesto externo (sección 02). Los costos del Lean Canvas son las horas del equipo, la nube/almacenamiento y el mantenimiento del modelo de IA. Como la infraestructura es gratuita o de código abierto, el costo se estima solo con las horas del equipo.
+
+| Concepto | Valor |
+|----------|-------|
+| Costo por hora | ₡3.510 (salario mínimo de Bachiller Universitario 2026, ₡664.078,07, más 26,83 % de cargas sociales, ÷ 30 días ÷ 8 h) |
+| Dedicación | 9 h por semana por integrante (ISW-912 tiene 3 créditos; 1 crédito = 3 h de trabajo semanal del estudiante) |
+| Horas por sprint | 2 integrantes × 9 h × 2 semanas = 36 h |
+| **Costo por sprint** | **₡126.360** (36 h × ₡3.510) |
+| **Total del release (5 sprints)** | **₡631.800** |
+
+#### Seguimiento: burndown del release
+
+Al cierre de cada sprint se registran los SP pendientes contra el plan.
+
+| Momento | Pendiente según plan (SP) | Pendiente real (SP) |
+|---------|:-------------------------:|:-------------------:|
+| Inicio | 131 | 131 |
+| Fin Sprint 1 | 108 | 108 |
+| Fin Sprint 2 | 81 | 81 |
+| Fin Sprint 3 | 55 | 55 |
+| Fin Sprint 4 | 29 | 29 |
+| Fin Sprint 5 | 0 | 0 |
+
 ---
 
 ## 08. Riesgos y adquisiciones
