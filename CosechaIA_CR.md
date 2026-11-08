@@ -13,8 +13,8 @@
 | Curso | ISW-912 · Administración de Proyectos Informáticos |
 | Institución | UTN Sede San Carlos |
 | Periodo | III Cuatrimestre 2026 |
-| Docente | Yesenia Calvo - Deiver Cubero |
-| Versión del expediente | 1.3 |
+| Docente | Yesenia Calvo |
+| Versión del expediente | 1.4 |
 
 **Integrantes**
 
@@ -262,6 +262,15 @@ Los eventos de Scrum (Sprint Planning, Daily, Refinamiento, Sprint Review y Retr
 | HU-27 | Pantalla de consentimiento de datos personales | 3 | J |
 | HU-29 | Mockups validados con productores | 3 | J |
 | **Total** | | **23** | |
+
+**Acciones de mitigación en el Sprint 1** (timebox, no suman SP; detalle en la sección 08):
+
+| ID | Acción | Timebox | Resp. |
+|----|--------|:-------:|:-----:|
+| MIT-01 | Spike: verificar la fuente real del SIMM (URL, formato, frecuencia e histórico) | 1 día | F |
+| MIT-04 | README por módulo y sesión de traspaso de conocimiento al cierre del sprint | 30 min | Ambos |
+| HU-16 (tarea) | La consulta formal a PIMA incluye condiciones de uso, citación e histórico o API | — | F |
+| HU-28 (tarea) | Documentar la regla de conflictos, los identificadores únicos y la interfaz propia para servicios externos | — | Ambos |
 
 ---
 
@@ -924,8 +933,9 @@ El proyecto no tiene presupuesto externo (sección 02). Los costos del Lean Canv
 | Dedicación | 8 h laborales diarias por integrante (jornada ordinaria), 10 días hábiles por sprint |
 | Horas por sprint | 2 integrantes × 8 h × 10 días = 160 h |
 | **Costo por sprint** | **₡561.600** (160 h × ₡3.510) |
-| **Total del release (5 sprints)** | **₡2.808.000** |
-
+| Subtotal del release (5 sprints) | ₡2.808.000 |
+| Reserva de contingencia (10 %) | ₡280.800 (≈ 80 h; cubre la activación de riesgos de la sección 08) |
+| **Total del release** | **₡3.088.800** |
 
 #### Seguimiento: burndown del release
 
@@ -943,6 +953,157 @@ Al cierre de cada sprint se registran los SP pendientes contra el plan.
 ---
 
 ## 08. Riesgos y adquisiciones
+
+### Matriz de Riesgos (Registro de Riesgos)
+
+**Escala:** probabilidad (P) e impacto (I) de 1 a 3; prioridad = P × I. 🔴 Alta prioridad (6-9): requiere plan de mitigación · 🟡 Vigilar (3-4) · 🟢 Aceptar (1-2). Las oportunidades se marcan con **(+)**.
+
+| ID | Riesgo ("si ocurre X, entonces Y") | Categoría | Tipo | P | I | P×I | Prioridad | Dueño |
+|----|------------------------------------|-----------|------|:-:|:-:|:---:|-----------|-------|
+| R-03 | Si el histórico de precios disponible es insuficiente o irregular para varios cultivos del catálogo, entonces el análisis de tendencias (HU-17) genera alertas poco confiables o no puede generarlas. | Técnico | Amenaza | 3 | 3 | 9 | 🔴 Alta | Joshua |
+| R-01 | Si CENADA/PIMA cambia el formato o el acceso de la publicación de precios del SIMM (o deja de publicar), entonces la ingesta falla y el motor de IA se queda sin datos actualizados. | Tercero | Amenaza | 2 | 3 | 6 | 🔴 Alta | Fabio |
+| R-02 | Si las condiciones de uso de los datos del CENADA/SIMM no permiten su uso sistemático, o PIMA no responde la consulta formal, entonces el proyecto no puede usar los datos de forma autorizada. | Tercero | Amenaza | 2 | 3 | 6 | 🔴 Alta | Fabio |
+| R-04 | Si la sincronización offline-first (reintentos, duplicados y conflictos) es más compleja de lo estimado, entonces HU-09 y HU-11 se atrasan y el productor puede perder información. | Técnico | Amenaza | 2 | 3 | 6 | 🔴 Alta | Fabio |
+| R-05 | Si un integrante se ausenta o se sobrecarga (roles compartidos) mientras es el único que conoce su módulo (Fabio: ingesta y sincronización; Joshua: IA y alertas), entonces el trabajo se detiene y no se alcanza el Sprint Goal. | Equipo | Amenaza | 2 | 3 | 6 | 🔴 Alta | Fabio (SM) |
+| R-08 | Si no se registran compradores reales con demandas publicadas, entonces el módulo de vinculación (HU-23 a HU-26) no puede validarse con datos reales. | Negocio | Amenaza | 3 | 2 | 6 | 🔴 Alta | Fabio |
+| R-06 | Si no se consiguen al menos 3 productores de San Carlos para validar mockups (HU-29) o para el piloto (HU-30), entonces el diseño se construye sin validar y la usabilidad no se comprueba. | Negocio | Amenaza | 2 | 2 | 4 | 🟡 Vigilar | Joshua |
+| R-07 | Si el servicio de backend/nube o de notificaciones en capa gratuita (se define en HU-28) cambia sus condiciones o se agotan sus límites, entonces la sincronización o las notificaciones dejan de funcionar. | Tercero (adquisición) | Amenaza | 2 | 2 | 4 | 🟡 Vigilar | Fabio |
+| R-10 | Si las historias de 8 SP (HU-09, HU-12, HU-17, HU-18, HU-25) están subestimadas, entonces el sprint no se termina y se acumulan historias para el Sprint 5. | Alcance | Amenaza | 2 | 2 | 4 | 🟡 Vigilar | Joshua (PO) |
+| R-09 | Si se recolectan o comparten datos personales sin el consentimiento adecuado (Ley 8968 de Protección de la Persona frente al Tratamiento de sus Datos Personales), entonces el proyecto incumple la normativa y pierde la confianza de los usuarios. | Negocio (legal) | Amenaza | 1 | 3 | 3 | 🟡 Vigilar | Joshua |
+| R-11 (+) | Si el MAG, los extensionistas o una asociación de productores aceptan una alianza de difusión, entonces se obtiene acceso a más productores para la validación, el piloto y la adopción. | Tercero | Oportunidad | 2 | 2 | 4 | 🟡 Aprovechar | Fabio |
+| R-12 (+) | Si CENADA/PIMA ofrece el histórico en un formato estructurado (archivo descargable o API), entonces se reduce el esfuerzo de HU-12/HU-13 y mejora la precisión del análisis de IA. | Tercero | Oportunidad | 1 | 3 | 3 | 🟡 Aprovechar | Fabio |
+
+### Mapa de calor
+
+| Probabilidad \ Impacto | **Bajo (1)** | **Medio (2)** | **Alto (3)** |
+|------------------------|--------------|---------------|--------------|
+| **Alta (3)** | 🟡 Vigilar<br>— | 🔴 Alta prioridad<br>R-08 | 🔴 Alta prioridad<br>**R-03** |
+| **Media (2)** | 🟢 Aceptar<br>— | 🟡 Vigilar<br>R-06, R-07, R-10, R-11 (+) | 🔴 Alta prioridad<br>R-01, R-02, R-04, R-05 |
+| **Baja (1)** | 🟢 Aceptar<br>— | 🟢 Aceptar<br>— | 🟡 Vigilar<br>R-09, R-12 (+) |
+
+### Plan de Mitigación — riesgos de alta prioridad
+
+#### R-03: Histórico de precios insuficiente para la IA (P×I = 9)
+
+| Campo | Detalle |
+|-------|---------|
+| **Estrategia** | Mitigar (reducir probabilidad e impacto). |
+| **Acciones concretas** | 1. Spike **MIT-02**: medir el histórico disponible por cultivo del catálogo y acordar el mínimo de datos necesario para generar alertas.<br>2. Limitar las alertas del MVP a los cultivos que cumplen ese mínimo (ya previsto en HU-17 CA3 y HU-18 CA3).<br>3. Empezar con un modelo simple y explicable (promedios móviles y comparación con el mismo periodo de años anteriores) antes de probar modelos más complejos. |
+| **Ítem en el backlog** | MIT-02 (Sprint 2); criterios de HU-17 y HU-18. |
+| **Disparador** | El spike muestra que menos de la mitad de los cultivos del catálogo tiene el histórico mínimo, o el análisis de HU-17 no supera la revisión del PO con datos reales. |
+| **Plan de contingencia** | Reducir las alertas a los cultivos con datos suficientes; para el resto, mostrar solo el precio actual y su fecha (HU-14). |
+| **Plan de respaldo** | Alertas basadas en reglas (precio actual comparado con el promedio histórico) en lugar del modelo de IA; se informa al docente el ajuste de alcance. |
+| **Dueño** | Joshua |
+| **Fecha de revisión** | Sprint Review del Sprint 2 (resultado del spike) y Sprint Planning del Sprint 3. |
+| **Riesgo residual** | P2 × I2 = 4 · 🟡 Vigilar |
+
+#### R-01: Cambio de formato o acceso en CENADA/SIMM (P×I = 6)
+
+| Campo | Detalle |
+|-------|---------|
+| **Estrategia** | Mitigar (reducir el impacto). |
+| **Acciones concretas** | 1. Spike **MIT-01** en el Sprint 1: leer la publicación real del SIMM y documentar URL, formato, frecuencia e histórico disponible.<br>2. Aislar la ingesta en un módulo adaptador, de modo que el motor de IA no dependa del formato de la fuente.<br>3. Guardar una copia local (snapshot) de cada carga.<br>4. Ingesta tolerante a cambios de formato (HU-15). |
+| **Ítem en el backlog** | MIT-01 (Sprint 1); HU-12 CA3 y HU-15 (Sprint 2). |
+| **Disparador** | Una ingesta falla por formato o acceso, o pasa más tiempo sin datos nuevos que la frecuencia de actualización documentada en HU-16. |
+| **Plan de contingencia** | La app sigue funcionando con los últimos datos guardados y muestra su fecha (HU-14); el ajuste del adaptador entra como tarea del sprint en curso (etiqueta roja si bloquea). |
+| **Plan de respaldo** | Carga manual (CSV) desde los boletines publicados para los cultivos del catálogo; aviso al docente si afecta el plan (escalamiento nivel 4, sección 10). |
+| **Dueño** | Fabio |
+| **Fecha de revisión** | Sprint Planning del Sprint 2 (antes de HU-12) y cada Retrospectiva. |
+| **Riesgo residual** | P2 × I2 = 4 · 🟡 Vigilar |
+
+#### R-02: Condiciones de uso de los datos CENADA/SIMM (P×I = 6)
+
+| Campo | Detalle |
+|-------|---------|
+| **Estrategia** | Evitar (aclarar las condiciones antes de construir la ingesta). |
+| **Acciones concretas** | 1. Dentro de HU-16, enviar la consulta formal a PIMA en la primera semana del Sprint 1 (Plan de Comunicaciones), preguntando condiciones de uso, forma de citar la fuente y disponibilidad de histórico o API (aprovecha R-12).<br>2. Usar solo datos publicados abiertamente y citar la fuente en la app.<br>3. No redistribuir los datos crudos: la app muestra precios y resultados del análisis. |
+| **Ítem en el backlog** | HU-16 (Sprint 1), con la consulta formal como tarea. |
+| **Disparador** | No hay respuesta 10 días hábiles después de la consulta, o la respuesta restringe el uso. |
+| **Plan de contingencia** | Sin respuesta: continuar con los datos públicos para fines académicos no comerciales, citando la fuente, y dejarlo documentado en HU-16; seguimiento por correo. |
+| **Plan de respaldo** | Si el uso se restringe: demostrar el motor con un conjunto de datos de muestra, declarando la limitación en la Sprint Review y ante el docente. |
+| **Dueño** | Fabio |
+| **Fecha de revisión** | Sprint Review del Sprint 1. |
+| **Riesgo residual** | P1 × I3 = 3 · 🟡 Vigilar |
+
+#### R-04: Complejidad de la sincronización offline-first (P×I = 6)
+
+| Campo | Detalle |
+|-------|---------|
+| **Estrategia** | Mitigar (reducir la probabilidad con aprendizaje temprano). |
+| **Acciones concretas** | 1. Definir en la arquitectura de HU-28 la regla de conflictos (última modificación) y el uso de identificadores únicos generados en el dispositivo para evitar duplicados.<br>2. Spike **MIT-03** en el Sprint 2: prueba de concepto de cola de envío con reintento, antes de comprometer HU-09 en el Sprint 3.<br>3. Incluir en las pruebas cruzadas casos de pérdida de conexión a mitad de la sincronización. |
+| **Ítem en el backlog** | Tarea en HU-28 (Sprint 1); MIT-03 (Sprint 2); HU-09 y HU-11. |
+| **Disparador** | La prueba de concepto no logra sincronizar sin duplicados dentro de su timebox, o HU-09 sigue *En progreso* a la mitad del Sprint 3. |
+| **Plan de contingencia** | Sincronización manual con un botón "Sincronizar ahora" y regla simple de conflictos; HU-11 (Should) se mueve o se reduce. |
+| **Plan de respaldo** | Envío en lote al reconectar; un registro local nunca se borra hasta que el servidor confirma su recepción. |
+| **Dueño** | Fabio |
+| **Fecha de revisión** | Sprint Review del Sprint 2 y Sprint Planning del Sprint 3. |
+| **Riesgo residual** | P1 × I3 = 3 · 🟡 Vigilar |
+
+#### R-05: Ausencia o sobrecarga de un integrante (P×I = 6)
+
+| Campo | Detalle |
+|-------|---------|
+| **Estrategia** | Mitigar (reducir el impacto repartiendo el conocimiento). |
+| **Acciones concretas** | 1. Mantener las pruebas cruzadas y la revisión de pull requests por el otro integrante (DoD 2 y 3).<br>2. **MIT-04**: README por módulo y una sesión de traspaso de conocimiento de 30 minutos al cierre de cada sprint.<br>3. En cada Sprint Planning, cada integrante declara su disponibilidad real y se planifica con esa capacidad. |
+| **Ítem en el backlog** | MIT-04 (tarea recurrente en los Sprints 1 a 5). |
+| **Disparador** | Un integrante anuncia una ausencia de 2 o más días hábiles, falta a 2 Dailys seguidas o el burndown no avanza durante 3 días. |
+| **Plan de contingencia** | El otro integrante toma las historias Must del ausente con apoyo del README; el PO mueve las historias Could y Should. |
+| **Plan de respaldo** | Aviso al docente con propuesta de ajuste de alcance (escalamiento nivel 4, sección 10). |
+| **Dueño** | Fabio (SM) |
+| **Fecha de revisión** | Cada Retrospectiva. |
+| **Riesgo residual** | P2 × I2 = 4 · 🟡 Vigilar |
+
+#### R-08: Falta de compradores reales para la vinculación (P×I = 6)
+
+| Campo | Detalle |
+|-------|---------|
+| **Estrategia** | Mitigar y aceptar el riesgo residual. |
+| **Acciones concretas** | 1. Contactar en el Sprint 3 (antes de HU-23/HU-24) al menos a 2 compradores reales, apoyándose en el MAG o las asociaciones (R-11).<br>2. **MIT-05**: preparar un conjunto de datos semilla de compradores y demandas, marcado como datos de prueba, para validar HU-25. |
+| **Ítem en el backlog** | MIT-05 (Sprints 3 y 4). |
+| **Disparador** | Al iniciar el Sprint 4 no hay ningún comprador real confirmado. |
+| **Plan de contingencia** | Validar las coincidencias con datos semilla y con un comprador simulado por el equipo, dejando la limitación documentada en la Sprint Review. |
+| **Plan de respaldo** | Presentar el módulo de vinculación como prueba de concepto en la demo (HU-33). |
+| **Dueño** | Fabio |
+| **Fecha de revisión** | Sprint Planning del Sprint 4. |
+| **Riesgo residual** | P3 × I1 = 3 · 🟡 Vigilar |
+
+### Plan de respuesta — riesgos a vigilar y oportunidades
+
+| ID | Estrategia | Acción e ítem del backlog | Disparador | Contingencia | Dueño | Revisión |
+|----|------------|---------------------------|------------|--------------|-------|----------|
+| R-06 | Mitigar | Coordinar con el MAG o las asociaciones antes de HU-29 y HU-30 (Plan de Comunicaciones, sección 10). | A 3 días hábiles de la sesión hay menos de 3 productores confirmados. | Validar con productores conocidos del equipo o por videollamada/WhatsApp con capturas de los mockups. | Joshua | Sprint Planning de los Sprints 1 y 5 |
+| R-07 | Mitigar | En HU-28, elegir un servicio con capa gratuita suficiente y acceder a él mediante una interfaz propia, de modo que cambiar de proveedor sea una tarea del backlog y no una reescritura. | El consumo supera el 80 % de la cuota gratuita o el proveedor anuncia un cambio de condiciones. | Reducir la frecuencia de sincronización y notificaciones; aplicar el plan de salida (ver Adquisiciones críticas). | Fabio | Sprint Review de cada sprint |
+| R-10 | Mitigar | Dividir las historias de 8 SP en tareas de un día o menos en la Sprint Planning; calibrar la velocidad al cierre del Sprint 1 (velocidad inicial de 26 SP; con 23 a 29 SP el release necesita de 5 a 6 sprints, sección 07); los spikes MIT-01, 02 y 03 reducen la incertidumbre antes de comprometerlas. | A la mitad del sprint queda más del 60 % de los SP pendientes, o al cierre de un sprint los SP pendientes superan el plan del burndown del release (108, 81, 55, 29 y 0; sección 07). | El PO mueve primero las historias Could y luego las Should (sección 05). | Joshua (PO) | Sprint Planning y Retrospectiva |
+| R-09 | Evitar | Consentimiento obligatorio (HU-27); recolectar solo nombre, zona, cultivos y contacto; HU-26 comparte solo datos autorizados; contraseñas no almacenadas en texto plano (HU-01 CA4). | Una historia nueva requiere un dato personal no contemplado en el consentimiento. | Se detiene la historia hasta actualizar el consentimiento. | Joshua | Refinamiento del backlog |
+| R-11 (+) | Compartir | Proponer al MAG o a una asociación una difusión conjunta del proyecto en el contacto del Sprint 1 (Plan de Comunicaciones). | El MAG o una asociación responde favorablemente. | Si se concreta: ampliar el grupo piloto de HU-30 y usar el canal para contactar compradores (R-08). | Fabio | Sprint Review del Sprint 1 |
+| R-12 (+) | Mejorar | Incluir en la consulta formal de HU-16 la pregunta por histórico descargable o API. | PIMA confirma un formato estructurado. | Si se concreta: adaptar el lector de HU-12 y cargar el histórico completo en HU-13. | Fabio | Sprint Review del Sprint 1 |
+
+### Acciones de mitigación agregadas al backlog
+
+Los spikes y tareas de mitigación se estiman en tiempo (timebox), no en puntos de historia, por lo que no cambian los totales de la sección 05. Su tiempo sale de las 160 h por sprint del equipo (sección 07), así que no agregan costo; sí consumen capacidad del sprint, y si no caben, el PO ajusta el alcance moviendo primero las historias Could y luego las Should.
+
+| ID | Acción | Riesgo | Tipo | Sprint | Timebox | Resp. | Revisa |
+|----|--------|--------|------|:------:|:-------:|:-----:|:------:|
+| MIT-01 | Verificar la fuente real del SIMM (URL, formato, frecuencia e histórico disponible) y leer una muestra de datos. | R-01, R-12 | Spike | 1 | 1 día | F | J |
+| MIT-02 | Medir el histórico disponible por cultivo del catálogo y acordar el mínimo de datos para generar alertas. | R-03 | Spike | 2 | 1 día | J | F |
+| MIT-03 | Prueba de concepto de cola de sincronización con reintento e identificadores únicos. | R-04 | Spike | 2 | 1 día | F | J |
+| MIT-04 | README por módulo y sesión de traspaso de conocimiento al cierre del sprint. | R-05 | Tarea recurrente | 1 a 5 | 30 min por sprint | Ambos | — |
+| MIT-05 | Contactar al menos a 2 compradores reales (Sprint 3) y preparar datos semilla de compradores y demandas (Sprint 4). | R-08 | Tarea | 3 y 4 | 1 día | F | J |
+
+**Tareas agregadas a historias existentes:**
+
+- **HU-16:** la consulta formal a PIMA incluye condiciones de uso, forma de citar la fuente y disponibilidad de histórico o API (R-02, R-12).
+- **HU-28:** la arquitectura documenta la regla de conflictos y los identificadores únicos de sincronización (R-04), y el acceso a servicios externos detrás de una interfaz propia (R-07).
+
+### Adquisiciones críticas
+
+**Tipo de contrato:** el proyecto no tiene presupuesto, así que ninguna adquisición tiene costo y no aplican los contratos de precio fijo, costo reembolsable ni tiempo y materiales. Todas las adquisiciones se rigen por términos de uso o licencias, sin SLA: el proveedor no se obliga a nada y **el riesgo queda del lado del proyecto**. Por eso cada adquisición crítica tiene un plan de salida.
+
+| # | Proveedor / recurso | Qué se adquiere | Tipo de acuerdo | Riesgos | Plan de salida | Resp. |
+|---|---------------------|-----------------|-----------------|---------|----------------|:-----:|
+| 1 | CENADA / PIMA — SIMM | Precios mayoristas e histórico de precios. | Uso de datos públicos según las condiciones documentadas en HU-16; sin contrato ni SLA. | R-01, R-02, R-12 | Adaptador de ingesta aislado y copia local de cada carga. Si la fuente se pierde, la app sigue con el último histórico y se cargan los boletines publicados manualmente (CSV). | F |
+| 2 | Servicio de backend/nube y notificaciones (capa gratuita; el proveedor se define en HU-28) | Almacenamiento en la nube, sincronización y envío de notificaciones. | Términos de servicio estándar del plan gratuito; sin SLA. | R-07 | Acceso detrás de una interfaz propia y exportación periódica de los datos; migración a otro proveedor con capa gratuita o a un servidor propio. Las alertas también se muestran dentro de la app (HU-19 CA2), así que no dependen solo de las notificaciones. | F |
+| 3 | Librerías de código abierto (base de datos local offline, análisis de datos) | Componentes de software reutilizables. | Licencias de código abierto; se verifica que sean compatibles (p. ej., MIT o Apache 2.0) antes de adoptarlas. | R-03, R-04 | Versiones fijadas en el repositorio; cada librería se encapsula para poder reemplazarla. | Ambos |
 
 ---
 
@@ -1141,6 +1302,7 @@ Una tarjeta solo pasa a **Hecho ✅** cuando su checklist de criterios de acepta
 | 1.1 | 2026-10-07 | Joshua Quesada / José Fabio Oconitrillo | Reestructuración | El documento se reorganiza como Expediente del Proyecto (secciones 00 a 12). Las secciones 07, 08, 09 y 12 quedan solo con título hasta que correspondan. Se retiran del documento la Definition of Done, los eventos Scrum y la tabla de riesgos, que se incorporarán en sus secciones (09, 04 y 08) cuando se trabajen. |
 | 1.2 | 2026-10-21 | Joshua Quesada / José Fabio Oconitrillo | Historias de usuario | En la sección 06, las tablas de criterios de aceptación por sprint se reemplazan por la ficha detallada de las 33 historias: formato Como/Quiero/Para, criterios Dado/cuando/entonces, prioridad, estimación, sprint, responsable, épica, dependencias y notas. |
 | 1.3 | 2026-10-31 | Joshua Quesada / José Fabio Oconitrillo | Trabajo colaborativo | Se agregan a la sección 10 el Plan de Comunicaciones (interesados, información, frecuencia, canal, responsable, reglas del equipo y escalamiento) y el Tablero de Trabajo en Trello (columnas, límites WIP, Sprint Backlog 1, responsables y regla de "Hecho"). Se redacta la Definition of Done (sección 09) y se referencian los eventos Scrum en la sección 04. Se corrigen los totales de puntos de historia. |
+| 1.4 | 2026-11-04 | Joshua Quesada / José Fabio Oconitrillo | Trabajo colaborativo (Semana 8) | Se redacta la sección 08: planificación de la gestión de riesgos, Matriz de Riesgos (12 riesgos con categoría, tipo, probabilidad, impacto, prioridad y dueño), mapa de calor, Plan de Mitigación (estrategia, acciones, ítem del backlog, disparador, contingencia, respaldo, fecha de revisión y riesgo residual) y adquisiciones críticas con su plan de salida. Las acciones de mitigación (MIT-01 a MIT-05) se agregan al backlog y las del Sprint 1, al Sprint Backlog (sección 05). |
 
 ### Decisiones y ajustes registrados
 
@@ -1154,6 +1316,10 @@ Una tarjeta solo pasa a **Hecho ✅** cuando su checklist de criterios de acepta
 - **Puntos de historia (v1.3):** se corrige el total del Sprint 5 de 31 a **29 SP** (HU-20 3 + HU-25 8 + HU-26 3 + HU-30 5 + HU-31 5 + HU-32 3 + HU-33 2) y el total comprometido de 143 a **131 SP** (23 + 27 + 26 + 26 + 29), más 5 SP de stretch.
 - **Herramienta de seguimiento:** se adopta Trello como Tablero de Trabajo, con límite WIP de 2 en las columnas activas.
 - **Aceptación de historias:** solo el PO mueve tarjetas a "Hecho"; si el autor es el PO, la prueba primero el otro integrante.
+- **Gestión de riesgos (v1.4):** escala 1-3 de probabilidad e impacto con umbral de alta prioridad en P×I ≥ 6; el Registro de Riesgos se revisa en cada Sprint Planning y Retrospectiva.
+- **Riesgo más crítico (v1.4):** R-03 (histórico de precios insuficiente para la IA, P×I = 9). Como 3 de los 6 riesgos rojos dependen de CENADA/SIMM, la verificación de la fuente se adelanta al Sprint 1 (MIT-01).
+- **Acciones de mitigación (v1.4):** se estiman con timebox, no en SP, por lo que no cambian los totales de la sección 05; si no caben en el sprint, se mueven primero las historias Could y luego las Should.
+- **Adquisiciones (v1.4):** sin presupuesto, todas las adquisiciones son de costo cero bajo términos de uso o licencias, sin SLA; cada adquisición crítica tiene un plan de salida.
 
 ### Evidencias
 
@@ -1161,6 +1327,8 @@ Una tarjeta solo pasa a **Hecho ✅** cuando su checklist de criterios de acepta
 |-----------|-----------|
 | Tablero de Trabajo (Trello) con Sprint Backlog 1 cargado | [CosechaIA CR — Tablero de Trabajo (ISW-912)](https://trello.com/b/tDK73VQt/cosechaia-cr-tablero-de-trabajo-isw-912) |
 | Capturas del tablero y de una tarjeta con sus checklists | _(pendiente de adjuntar)_ |
+| Commit de la Matriz de Riesgos y el Plan de Mitigación (v1.4) | Repositorio Git del proyecto · _(hash del commit, completar)_ |
+| Tarjetas MIT de mitigación en el tablero | _(pendiente de cargar en Trello)_ |
 
 ---
 
