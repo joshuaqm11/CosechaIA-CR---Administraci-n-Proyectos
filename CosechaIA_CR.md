@@ -13,7 +13,7 @@
 | Curso | ISW-912 · Administración de Proyectos Informáticos |
 | Institución | UTN Sede San Carlos |
 | Periodo | III Cuatrimestre 2026 |
-| Docente | Yesenia Calvo |
+| Docente | Yesenia Calvo - Deiver Cubero |
 | Versión del expediente | 1.4 |
 
 **Integrantes**
