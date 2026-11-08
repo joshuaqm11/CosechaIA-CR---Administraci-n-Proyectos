@@ -921,10 +921,11 @@ El proyecto no tiene presupuesto externo (sección 02). Los costos del Lean Canv
 | Concepto | Valor |
 |----------|-------|
 | Costo por hora | ₡3.510 (salario mínimo de Bachiller Universitario 2026, ₡664.078,07, más 26,83 % de cargas sociales, ÷ 30 días ÷ 8 h) |
-| Dedicación | 9 h por semana por integrante (ISW-912 tiene 3 créditos; 1 crédito = 3 h de trabajo semanal del estudiante) |
-| Horas por sprint | 2 integrantes × 9 h × 2 semanas = 36 h |
-| **Costo por sprint** | **₡126.360** (36 h × ₡3.510) |
-| **Total del release (5 sprints)** | **₡631.800** |
+| Dedicación | 8 h laborales diarias por integrante (jornada ordinaria), 10 días hábiles por sprint |
+| Horas por sprint | 2 integrantes × 8 h × 10 días = 160 h |
+| **Costo por sprint** | **₡561.600** (160 h × ₡3.510) |
+| **Total del release (5 sprints)** | **₡2.808.000** |
+
 
 #### Seguimiento: burndown del release
 
