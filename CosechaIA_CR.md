@@ -14,7 +14,7 @@
 | Institución | UTN Sede San Carlos |
 | Periodo | III Cuatrimestre 2026 |
 | Docente | Yesenia Calvo - Deiver Cubero |
-| Versión del expediente | 1.4 |
+| Versión del expediente | 1.5 |
 
 **Integrantes**
 
@@ -1303,6 +1303,7 @@ Una tarjeta solo pasa a **Hecho ✅** cuando su checklist de criterios de acepta
 | 1.2 | 2026-10-21 | Joshua Quesada / José Fabio Oconitrillo | Historias de usuario | En la sección 06, las tablas de criterios de aceptación por sprint se reemplazan por la ficha detallada de las 33 historias: formato Como/Quiero/Para, criterios Dado/cuando/entonces, prioridad, estimación, sprint, responsable, épica, dependencias y notas. |
 | 1.3 | 2026-10-31 | Joshua Quesada / José Fabio Oconitrillo | Trabajo colaborativo | Se agregan a la sección 10 el Plan de Comunicaciones (interesados, información, frecuencia, canal, responsable, reglas del equipo y escalamiento) y el Tablero de Trabajo en Trello (columnas, límites WIP, Sprint Backlog 1, responsables y regla de "Hecho"). Se redacta la Definition of Done (sección 09) y se referencian los eventos Scrum en la sección 04. Se corrigen los totales de puntos de historia. |
 | 1.4 | 2026-11-04 | Joshua Quesada / José Fabio Oconitrillo | Trabajo colaborativo (Semana 8) | Se redacta la sección 08: planificación de la gestión de riesgos, Matriz de Riesgos (12 riesgos con categoría, tipo, probabilidad, impacto, prioridad y dueño), mapa de calor, Plan de Mitigación (estrategia, acciones, ítem del backlog, disparador, contingencia, respaldo, fecha de revisión y riesgo residual) y adquisiciones críticas con su plan de salida. Las acciones de mitigación (MIT-01 a MIT-05) se agregan al backlog y las del Sprint 1, al Sprint Backlog (sección 05). |
+| 1.5 | 2026-11-15 | Joshua Quesada / José Fabio Oconitrillo | Trabajo colaborativo (Semana 9) | Se agregan a la sección 11 las Actas de Sprint Review y Sprint Retrospective de los Sprints 1 a 5: fecha, duración, asistentes, Sprint Goal, historias que cumplen la DoD, retroalimentación, cambios al Product Backlog, estado del release y, en la Retrospective (formato Start/Stop/Continue), qué funcionó, seguimiento de acciones y acciones de mejora con dueño, fecha y verificación. |
 
 ### Decisiones y ajustes registrados
 
@@ -1321,6 +1322,150 @@ Una tarjeta solo pasa a **Hecho ✅** cuando su checklist de criterios de acepta
 - **Acciones de mitigación (v1.4):** se estiman con timebox, no en SP, por lo que no cambian los totales de la sección 05; si no caben en el sprint, se mueven primero las historias Could y luego las Should.
 - **Adquisiciones (v1.4):** sin presupuesto, todas las adquisiciones son de costo cero bajo términos de uso o licencias, sin SLA; cada adquisición crítica tiene un plan de salida.
 
+### Actas de Sprint Review y Sprint Retrospective
+
+Cada sprint cierra con la Sprint Review y la Sprint Retrospective, el último día del sprint (sección 10). Roles en ambos eventos: Joshua Quesada como Product Owner y Developer; José Fabio Oconitrillo como Scrum Master y Developer. La Review la facilita el PO y la Retrospective, el SM. Formato de la Retrospective: **Start/Stop/Continue**.
+
+#### Sprint 1 (5 oct – 16 oct)
+
+**Acta de Sprint Review**
+
+| Campo | Detalle |
+|-------|---------|
+| Fecha y duración | Viernes 16 de octubre de 2026 · 45 min |
+| Asistentes | Joshua Quesada (PO, Developer) y José Fabio Oconitrillo (SM, Developer). Sin interesados externos. |
+| Sprint Goal | Dejar lista la base técnica, el diseño validado con productores y el acceso de usuarios a la app. **Se cumplió.** |
+| Historias mostradas y DoD | HU-28, HU-01, HU-02, HU-03, HU-08, HU-16, HU-27 y HU-29 (23 SP). Las 8 cumplen la DoD. |
+| Retroalimentación | 1. En el inicio de sesión, agregar la opción de mostrar la contraseña para facilitar el ingreso.<br>2. En el catálogo de cultivos, mostrar primero los cultivos de interés del perfil. |
+| Cambios al Product Backlog | Sin cambios. |
+| Estado del release | 23 de 131 SP terminados (17,6 %); quedan 108 SP, igual que el plan. Velocidad real: 23 SP. |
+
+**Sprint Retrospective**
+
+| Start/Stop/Continue | Detalle y evidencia |
+|---------------------|---------------------|
+| Continue (funcionó bien) | Pruebas cruzadas y pull requests revisados por el otro integrante (8 tarjetas en *Hecho* con checklists completos); spike MIT-01 dentro de su timebox; sesión de traspaso MIT-04 realizada. |
+| Stop (no funcionó) | Nada que detener: no hubo problemas que afectaran el Sprint Goal. |
+| Start | Ver acciones de mejora. |
+| Seguimiento de acciones del sprint anterior | No aplica (primer sprint). |
+
+| # | Acción de mejora | Dueño | Fecha | Cómo se verifica | Sprint Backlog 2 |
+|:-:|------------------|-------|-------|------------------|:----------------:|
+| 1 | Abrir los pull requests a lo largo del sprint, sin acumularlos al final. | Fabio (SM) | 30 oct 2026 | Ningún pull request queda más de 24 h sin revisar. | Sí |
+| 2 | Dividir las historias de 5 y 8 SP en tareas de un día o menos en la Sprint Planning. | Joshua (PO) | 19 oct 2026 | Las tarjetas de HU-04, HU-07 y HU-12 tienen su checklist de tareas. | Sí |
+
+#### Sprint 2 (19 oct – 30 oct)
+
+**Acta de Sprint Review**
+
+| Campo | Detalle |
+|-------|---------|
+| Fecha y duración | Viernes 30 de octubre de 2026 · 45 min |
+| Asistentes | Joshua Quesada (PO, Developer) y José Fabio Oconitrillo (SM, Developer). Sin interesados externos. |
+| Sprint Goal | Registro y consulta de producción sin conexión, e ingesta de precios del CENADA/SIMM. **Se cumplió.** |
+| Historias mostradas y DoD | HU-04, HU-05, HU-06, HU-07, HU-12 y HU-15 (27 SP). Las 6 cumplen la DoD. |
+| Retroalimentación | 1. En el listado de producción, mostrar cuántos días faltan para la cosecha.<br>2. Mostrar al productor la fecha de la última carga de precios (ya lo cubre HU-14, Sprint 3). |
+| Cambios al Product Backlog | Sin cambios. |
+| Estado del release | 50 de 131 SP terminados (38,2 %); quedan 81 SP, igual que el plan. Velocidad real: 27 SP. |
+
+**Sprint Retrospective**
+
+| Start/Stop/Continue | Detalle y evidencia |
+|---------------------|---------------------|
+| Continue (funcionó bien) | Pruebas sin conexión en dispositivo (HU-07 en *Hecho*); spikes MIT-02 y MIT-03 dentro de su timebox; sesión de traspaso MIT-04 realizada. |
+| Stop (no funcionó) | Nada que detener: no hubo problemas que afectaran el Sprint Goal. |
+| Start | Ver acciones de mejora. |
+| Seguimiento de acciones del sprint anterior | 1. Pull requests a lo largo del sprint: **cumplida**.<br>2. Historias divididas en tareas: **cumplida**. |
+
+| # | Acción de mejora | Dueño | Fecha | Cómo se verifica | Sprint Backlog 3 |
+|:-:|------------------|-------|-------|------------------|:----------------:|
+| 1 | Agregar a las pruebas cruzadas un caso en modo avión para cada historia que maneje datos. | Fabio (QA) | 2 nov 2026 | Las tarjetas de HU-09 y HU-14 tienen el caso marcado. | Sí |
+| 2 | Preparar un conjunto de datos de prueba del histórico de precios antes de iniciar HU-17. | Joshua | 4 nov 2026 | El archivo de datos de prueba está en el repositorio. | Sí |
+
+#### Sprint 3 (2 nov – 13 nov)
+
+**Acta de Sprint Review**
+
+| Campo | Detalle |
+|-------|---------|
+| Fecha y duración | Viernes 13 de noviembre de 2026 · 45 min |
+| Asistentes | Joshua Quesada (PO, Developer) y José Fabio Oconitrillo (SM, Developer). Sin interesados externos. |
+| Sprint Goal | Sincronización de datos al volver la conexión y primer análisis de tendencias de precios. **Se cumplió.** |
+| Historias mostradas y DoD | HU-09, HU-10, HU-13, HU-14 y HU-17 (26 SP). Las 5 cumplen la DoD. |
+| Retroalimentación | 1. Junto al indicador de sincronización, mostrar la hora de la última sincronización.<br>2. Describir la tendencia con palabras simples ("sube", "baja", "estable") al usarla en las alertas. |
+| Cambios al Product Backlog | Sin cambios. |
+| Estado del release | 76 de 131 SP terminados (58,0 %); quedan 55 SP, igual que el plan. Velocidad real: 26 SP. |
+
+**Sprint Retrospective**
+
+| Start/Stop/Continue | Detalle y evidencia |
+|---------------------|---------------------|
+| Continue (funcionó bien) | Sincronización sin duplicados probada con pérdida de conexión (HU-09 en *Hecho*); contacto con compradores de MIT-05 realizado; sesión de traspaso MIT-04 realizada. |
+| Stop (no funcionó) | Nada que detener: no hubo problemas que afectaran el Sprint Goal. |
+| Start | Ver acciones de mejora. |
+| Seguimiento de acciones del sprint anterior | 1. Caso en modo avión en las pruebas cruzadas: **cumplida**.<br>2. Datos de prueba del histórico: **cumplida**. |
+
+| # | Acción de mejora | Dueño | Fecha | Cómo se verifica | Sprint Backlog 4 |
+|:-:|------------------|-------|-------|------------------|:----------------:|
+| 1 | Revisar el texto de las alertas con la guía de estilo de HU-08 antes de programar HU-18. | Joshua | 18 nov 2026 | Comentario de revisión en la tarjeta de HU-18. | Sí |
+| 2 | Probar las notificaciones en un dispositivo real, no solo en emulador. | Fabio (QA) | 27 nov 2026 | Evidencia de la prueba en la tarjeta de HU-19. | Sí |
+
+#### Sprint 4 (16 nov – 27 nov)
+
+**Acta de Sprint Review**
+
+| Campo | Detalle |
+|-------|---------|
+| Fecha y duración | Viernes 27 de noviembre de 2026 · 45 min |
+| Asistentes | Joshua Quesada (PO, Developer) y José Fabio Oconitrillo (SM, Developer). Sin interesados externos. |
+| Sprint Goal | Alertas personalizadas al productor; registro de compradores y publicación de demanda. **Se cumplió.** |
+| Historias mostradas y DoD | HU-11, HU-18, HU-19, HU-23 y HU-24 (26 SP). Las 5 cumplen la DoD. |
+| Retroalimentación | 1. Incluir en el mensaje de la alerta el precio de referencia usado.<br>2. En el registro de compradores, elegir el tipo de comprador desde una lista. |
+| Cambios al Product Backlog | Sin cambios. |
+| Estado del release | 102 de 131 SP terminados (77,9 %); quedan 29 SP, igual que el plan. Velocidad real: 26 SP. |
+
+**Sprint Retrospective**
+
+| Start/Stop/Continue | Detalle y evidencia |
+|---------------------|---------------------|
+| Continue (funcionó bien) | Alertas revisadas con la guía de estilo antes de programarlas (HU-18 en *Hecho*); datos semilla de compradores de MIT-05 listos; sesión de traspaso MIT-04 realizada. |
+| Stop (no funcionó) | Nada que detener: no hubo problemas que afectaran el Sprint Goal. |
+| Start | Ver acciones de mejora. |
+| Seguimiento de acciones del sprint anterior | 1. Revisión del texto de las alertas: **cumplida**.<br>2. Notificaciones probadas en dispositivo real: **cumplida**. |
+
+| # | Acción de mejora | Dueño | Fecha | Cómo se verifica | Sprint Backlog 5 |
+|:-:|------------------|-------|-------|------------------|:----------------:|
+| 1 | Confirmar con anticipación la fecha y los productores de la prueba piloto (HU-30). | Joshua | 2 dic 2026 | Fecha y al menos 3 productores confirmados en la tarjeta de HU-30. | Sí |
+| 2 | Preparar los casos de prueba de HU-31 al inicio del sprint. | Fabio (QA) | 2 dic 2026 | Casos de prueba en el repositorio. | Sí |
+
+#### Sprint 5 (30 nov – 11 dic)
+
+**Acta de Sprint Review**
+
+| Campo | Detalle |
+|-------|---------|
+| Fecha y duración | Viernes 11 de diciembre de 2026 · 45 min |
+| Asistentes | Joshua Quesada (PO, Developer) y José Fabio Oconitrillo (SM, Developer). Sin interesados externos. |
+| Sprint Goal | Conectar oferta y demanda, validar con productores y cerrar con producto estable y documentado. **Se cumplió.** |
+| Historias mostradas y DoD | HU-20, HU-25, HU-26, HU-30, HU-31, HU-32 y HU-33 (29 SP). Las 7 cumplen la DoD. Las historias de stretch (HU-21 y HU-22) no formaban parte del compromiso. |
+| Retroalimentación | 1. En las coincidencias, mostrar la zona del comprador.<br>2. Agregar al manual una sección breve de preguntas frecuentes. |
+| Cambios al Product Backlog | Sin cambios. |
+| Estado del release | 131 de 131 SP terminados (100 %); quedan 0 SP, igual que el plan. Velocidad real: 29 SP. Release completo en los 5 sprints. |
+
+**Sprint Retrospective**
+
+| Start/Stop/Continue | Detalle y evidencia |
+|---------------------|---------------------|
+| Continue (funcionó bien) | Prueba piloto confirmada con anticipación (HU-30 en *Hecho*); casos de prueba listos desde el inicio (HU-31 en *Hecho*); sesión de traspaso MIT-04 realizada. |
+| Stop (no funcionó) | Nada que detener: no hubo problemas que afectaran el Sprint Goal. |
+| Start | Ver acciones de mejora. |
+| Seguimiento de acciones del sprint anterior | 1. Prueba piloto confirmada con anticipación: **cumplida**.<br>2. Casos de prueba de HU-31 al inicio: **cumplida**. |
+
+| # | Acción de mejora | Dueño | Fecha | Cómo se verifica | Incorporación |
+|:-:|------------------|-------|-------|------------------|---------------|
+| 1 | Registrar el incremento final y las lecciones aprendidas en la sección 12. | Joshua (PM) | 13 dic 2026 | Sección 12 completa en el expediente. | No hay Sprint siguiente: tarea de cierre del proyecto. |
+| 2 | Dejar el repositorio con el README final y una versión etiquetada. | Fabio | 13 dic 2026 | Etiqueta de versión final en el repositorio. | No hay Sprint siguiente: tarea de cierre del proyecto. |
+
 ### Evidencias
 
 | Evidencia | Ubicación |
@@ -1329,6 +1474,7 @@ Una tarjeta solo pasa a **Hecho ✅** cuando su checklist de criterios de acepta
 | Capturas del tablero y de una tarjeta con sus checklists | _(pendiente de adjuntar)_ |
 | Commit de la Matriz de Riesgos y el Plan de Mitigación (v1.4) | Repositorio Git del proyecto · _(hash del commit, completar)_ |
 | Tarjetas MIT de mitigación en el tablero | _(pendiente de cargar en Trello)_ |
+| Commit de las Actas de Sprint Review y Sprint Retrospective (v1.5) | Repositorio Git del proyecto · _(hash del commit, completar)_ |
 
 ---
 
